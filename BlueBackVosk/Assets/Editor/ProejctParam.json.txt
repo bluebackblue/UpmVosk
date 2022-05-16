@@ -1,0 +1,74 @@
+{
+	"namespace_author":"BlueBack",
+	"namespace_package":"Vosk",
+	"git_url":"https://github.com/bluebackblue/UpmVosk",
+	"git_api":"https://api.github.com/repos/bluebackblue/UpmVosk",
+	"git_path":"BlueBackVosk/Assets/UPM",
+	"discription_simple":"ＧＬ操作",
+	"discription_detal":[
+		"ＶＯＳＫ操作",
+		"* 音声認識",
+	],
+	"keyword":[
+		"NuGet",
+		"Vosk"
+	],
+	"changelog":[
+		"# Changelog",
+		"",
+		"## [0.0.0] - 2022-05-17",
+		"### Changes",
+		"- Init",
+		""
+	],
+	"root_readmemd_path":"../../README.md",
+	"need_unity_version":"2020.1",
+	"asmdef_runtime":{
+		"define_list":[
+			{
+				"mode":"package",
+				"package_pathname":"com.unity.mathematics",
+				"define":"ASMDEF_UNITY_MATHEMATICS",
+				"expression":null
+			}
+		],
+		"reference_list":[
+			{
+				"mode":"package",
+				"package_fullname":"BlueBack.PoolList",
+				"url":"https://github.com/bluebackblue/UpmUnityPoolList",
+				"define_package_pathname":"blueback.poolist"
+			},
+			{
+				"mode":"package",
+				"package_fullname":"Unity.Mathematics",
+				"url":"https://docs.unity3d.com/Packages/com.unity.mathematics@latest/index.html",
+				"define_package_pathname":"com.unity.mathematics"
+			}
+		]
+	},
+	"asmdef_editor":{
+		"define_list":[
+		],
+		"reference_list":[
+			{
+				"mode":"package",
+				"package_fullname":"BlueBack.Vosk",
+				"url":"https://github.com/bluebackblue/UpmVosk",
+				"define_package_pathname":"blueback.vosk"
+			}
+		]
+	},
+	"asmdef_sample":{
+		"define_list":[
+		],
+		"reference_list":[
+			{
+				"mode":"package",
+				"package_fullname":"BlueBack.Vosk",
+				"url":"https://github.com/bluebackblue/UpmVosk",
+				"define_package_pathname":"blueback.vosk"
+			}
+		]
+	}
+}
