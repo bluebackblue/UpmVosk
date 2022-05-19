@@ -21,7 +21,7 @@ namespace BlueBack.Vosk
 
 		/** packageversion
 		*/
-		public const string packageversion = "0.0.0";
+		public const string packageversion = "0.0.1";
 
 		/** GetPackageVersion
 		*/

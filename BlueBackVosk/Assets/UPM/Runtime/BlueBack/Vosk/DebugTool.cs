@@ -15,7 +15,7 @@ namespace BlueBack.Vosk
 	*/
 	public static class DebugTool
 	{
-		/** s_AssertProc
+		/** assertproc
 		*/
 		#if(DEF_BLUEBACK_VOSK_ASSERT)
 		public static void DefaultAssertProc(System.Exception a_exception,string a_message)
@@ -31,10 +31,10 @@ namespace BlueBack.Vosk
 			UnityEngine.Debug.Assert(false);
 		}
 		public delegate void AssertProcType(System.Exception a_exception,string a_message);
-		public static AssertProcType s_AssertProc = DefaultAssertProc;
+		public static AssertProcType assertproc = DefaultAssertProc;
 		#endif
 
-		/** s_LogProc
+		/** logproc
 		*/
 		#if(DEF_BLUEBACK_VOSK_LOG)
 		public static void DefaultLogProc(string a_message)
@@ -42,7 +42,7 @@ namespace BlueBack.Vosk
 			UnityEngine.Debug.Log(a_message);
 		}
 		public delegate void LogProcType(string a_message);
-		public static LogProcType s_LogProc = DebugTool.DefaultLogProc;
+		public static LogProcType logproc = DebugTool.DefaultLogProc;
 		#endif
 
 		/** Assert
@@ -51,7 +51,7 @@ namespace BlueBack.Vosk
 		public static void Assert(bool a_flag,System.Exception a_exception = null)
 		{
 			if(a_flag != true){
-				s_AssertProc(a_exception,null);
+				DebugTool.assertproc(a_exception,null);
 			}
 		}
 		#endif
@@ -62,7 +62,7 @@ namespace BlueBack.Vosk
 		public static void Assert(bool a_flag,string a_message)
 		{
 			if(a_flag != true){
-				s_AssertProc(null,a_message);
+				DebugTool.assertproc(null,a_message);
 			}
 		}
 		#endif
@@ -70,7 +70,7 @@ namespace BlueBack.Vosk
 		#if(DEF_BLUEBACK_VOSK_LOG)
 		public static void Log(string a_message)
 		{
-			s_LogProc(a_message);
+			DebugTool.logproc(a_message);
 		}
 		#endif
 

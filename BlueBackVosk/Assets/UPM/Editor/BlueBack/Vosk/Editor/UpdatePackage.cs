@@ -22,7 +22,7 @@ namespace BlueBack.Vosk.Editor
 
 		/** MenuItem_UpdatePackage_Develop
 		*/
-		#if(!DEF_USER_BLUEBACK_VOSK)
+		#if(!USERDEF_BLUEBACK_VOSK)
 		[UnityEditor.MenuItem("BlueBack/Vosk/UpdatePackage/Develop")]
 		#endif
 		public static void MenuItem_UpdatePackage_Develop()
@@ -40,12 +40,12 @@ namespace BlueBack.Vosk.Editor
 
 		/** MenuItem_UpdatePackage_Last
 		*/
-		#if(!DEF_USER_BLUEBACK_VOSK)
+		#if(!USERDEF_BLUEBACK_VOSK)
 		[UnityEditor.MenuItem("BlueBack/Vosk/UpdatePackage/Last " + Version.packageversion)]
 		#endif
 		public static void MenuItem_UpdatePackage_Last()
 		{
-			string t_version = GetLastReleaseNameFromGitHub();
+			string t_version = Inner_GetLastReleaseNameFromGitHub();
 			if(t_version != null){
 				string t_name = "https://github.com/bluebackblue/UpmVosk.git?path=BlueBackVosk/Assets/UPM#" + t_version;
 				UnityEditor.PackageManager.Requests.AddRequest t_request = UnityEditor.PackageManager.Client.Add(t_name);
@@ -59,9 +59,9 @@ namespace BlueBack.Vosk.Editor
 			}
 		}
 
-		/** DownloadBinary
+		/** Inner_DownloadBinary
 		*/
-		private static byte[] DownloadBinary(string a_url)
+		private static byte[] Inner_DownloadBinary(string a_url)
 		{
 			try{
 				using(UnityEngine.Networking.UnityWebRequest t_webrequest = ((System.Func<UnityEngine.Networking.UnityWebRequest>)(()=>{
@@ -92,14 +92,14 @@ namespace BlueBack.Vosk.Editor
 			}
 		}
 
-		/** GetLastReleaseNameFromGitHub
+		/** Inner_GetLastReleaseNameFromGitHub
 		*/
-		private static string GetLastReleaseNameFromGitHub()
+		private static string Inner_GetLastReleaseNameFromGitHub()
 		{
 			string t_url = "https://api.github.com/repos/bluebackblue/UpmVosk/releases/latest";
 
 			try{
-				byte[] t_binary = DownloadBinary(t_url);
+				byte[] t_binary = Inner_DownloadBinary(t_url);
 				if(t_binary != null){
 					string t_text = System.Text.Encoding.UTF8.GetString(t_binary,0,t_binary.Length);
 					System.Text.RegularExpressions.Match t_match = System.Text.RegularExpressions.Regex.Match(t_text,".*(?<name>\\\"tag_name\\\")\\s*\\:\\s*\\\"(?<value>[a-zA-Z0-9_\\.]*)\\\".*");

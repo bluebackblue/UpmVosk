@@ -7,6 +7,13 @@
 */
 
 
+/** define
+*/
+#if((ASMDEF_BLUEBACK_VERSIONMANAGER)||(USERDEF_BLUEBACK_VERSIONMANAGER))
+#define ASMDEF_TRUE
+#endif
+
+
 /** Editor
 */
 #if(UNITY_EDITOR)
@@ -20,22 +27,21 @@ namespace Editor
 		/** VersionManagerSetting
 		*/
 		static VersionManagerSetting()
+		#if(ASMDEF_TRUE)
 		{
-			#if(ASMDEF_BLUEBACK_VERSIONMANAGER)
-
 			//Object_RootUssUxml
 			BlueBack.VersionManager.Editor.Object_RootUssUxml.Save(false);
 
 			//projectparam
-			BlueBack.VersionManager.Editor.Object_Setting.s_projectparam = BlueBack.VersionManager.Editor.ProjectParam.Load();
+			BlueBack.VersionManager.Editor.Object_Setting.projectparam = BlueBack.VersionManager.Editor.ProjectParam.Load();
 
-			//s_object_root_readme_md
-			BlueBack.VersionManager.Editor.Object_Setting.s_object_root_readme_md = new BlueBack.VersionManager.Editor.Object_Setting.Creator_Type[]{
+			//object_root_readme_md
+			BlueBack.VersionManager.Editor.Object_Setting.object_root_readme_md = new BlueBack.VersionManager.Editor.Object_Setting.Creator_Type[]{
 
 				//概要。
 				(in BlueBack.VersionManager.Editor.Object_Setting.Creator_Argument a_argument) => {
 					System.Collections.Generic.List<string> t_list = new System.Collections.Generic.List<string>();
-					t_list.Add("# " + BlueBack.VersionManager.Editor.Object_Setting.s_projectparam.namespace_author + "." + BlueBack.VersionManager.Editor.Object_Setting.s_projectparam.namespace_package);
+					t_list.Add("# " + BlueBack.VersionManager.Editor.Object_Setting.projectparam.namespace_author + "." + BlueBack.VersionManager.Editor.Object_Setting.projectparam.namespace_package);
 					t_list.AddRange(BlueBack.VersionManager.Editor.Object_Setting.Create_RootReadMd_Overview(a_argument));
 					return t_list.ToArray();
 				},
@@ -45,7 +51,7 @@ namespace Editor
 					return new string[]{
 						"## ライセンス",
 						"MIT License",
-						"* " + BlueBack.VersionManager.Editor.Object_Setting.s_projectparam.git_url + "/blob/main/LICENSE",
+						"* " + BlueBack.VersionManager.Editor.Object_Setting.projectparam.git_url + "/blob/main/LICENSE",
 					};
 				},
 
@@ -70,9 +76,9 @@ namespace Editor
 					return new string[]{
 						"## UPM",
 						"### 最新",
-						"* " + BlueBack.VersionManager.Editor.Object_Setting.s_projectparam.git_url + ".git?path=" + BlueBack.VersionManager.Editor.Object_Setting.s_projectparam.git_path + "#" + a_argument.version,
+						"* " + BlueBack.VersionManager.Editor.Object_Setting.projectparam.git_url + ".git?path=" + BlueBack.VersionManager.Editor.Object_Setting.projectparam.git_path + "#" + a_argument.version,
 						"### 開発",
-						"* " + BlueBack.VersionManager.Editor.Object_Setting.s_projectparam.git_url + ".git?path=" + BlueBack.VersionManager.Editor.Object_Setting.s_projectparam.git_path,
+						"* " + BlueBack.VersionManager.Editor.Object_Setting.projectparam.git_url + ".git?path=" + BlueBack.VersionManager.Editor.Object_Setting.projectparam.git_path,
 					};
 				},
 
@@ -99,9 +105,12 @@ namespace Editor
 					return t_list.ToArray();
 				},
 			};
-
-			#endif
 		}
+		#else
+		{
+			#warning "ASMDEF_TRUE"
+		}
+		#endif
 	}
 }
 #endif
