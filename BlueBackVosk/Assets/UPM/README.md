@@ -2,6 +2,7 @@
 ＶＯＳＫ操作
 * 音声認識
 
+
 ## ライセンス
 MIT License
 * https://github.com/bluebackblue/UpmVosk/blob/main/LICENSE

@@ -8,6 +8,7 @@
 	"discription_detal":[
 		"ＶＯＳＫ操作",
 		"* 音声認識",
+		""
 	],
 	"keyword":[
 		"NuGet",
