@@ -29,6 +29,12 @@
 		],
 		"reference_list":[
 			{
+				"mode":"url",
+				"package_fullname":null,
+				"url":"https://github.com/alphacep/vosk-api",
+				"define_package_pathname":null
+			},
+			{
 				"mode":"package",
 				"package_fullname":"BlueBack.Vosk.Dll",
 				"url":"https://github.com/bluebackblue/UpmVosk",

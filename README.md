@@ -9,6 +9,7 @@ MIT License
 
 ## 依存 / 使用ライセンス等
 ### ランタイム
+* https://github.com/alphacep/vosk-api
 * https://github.com/bluebackblue/UpmVosk
 * https://github.com/bluebackblue/UpmJsonItem
 ### エディター

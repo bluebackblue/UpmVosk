@@ -177,3 +177,5 @@ MonoBehaviour:
       microphone_buffer_byte: 
       microphone_blockcount_multi: 0
       microphone_blockcount_single: 0
+      vosk_wordmode: 0
+  jsonstring: 
