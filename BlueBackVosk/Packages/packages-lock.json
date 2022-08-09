@@ -28,19 +28,12 @@
       "dependencies": {},
       "hash": "6b90c33513d772ead7d8a2bd84e3d54069746f13"
     },
-    "blueback.poollist": {
-      "version": "https://github.com/bluebackblue/UpmPoolList.git?path=BlueBackPoolList/Assets/UPM",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "672b5b387ee5de8331e8bfbafe002e37ccb3a336"
-    },
     "blueback.versionmanager": {
       "version": "https://github.com/bluebackblue/UpmVersionManager.git?path=BlueBackVersionManager/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "b0f02cb2967f14ff3d50eb530369a885e5f16c84"
+      "hash": "8626c59dce3878bb5c9e8b2e9cf7d70af3309d40"
     },
     "com.unity.collab-proxy": {
       "version": "1.15.15",

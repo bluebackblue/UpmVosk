@@ -26,25 +26,19 @@
 	"need_unity_version":"2020.1",
 	"asmdef_runtime":{
 		"define_list":[
-			{
-				"mode":"package",
-				"package_pathname":"com.unity.mathematics",
-				"define":"ASMDEF_UNITY_MATHEMATICS",
-				"expression":null
-			}
 		],
 		"reference_list":[
 			{
 				"mode":"package",
-				"package_fullname":"BlueBack.PoolList",
-				"url":"https://github.com/bluebackblue/UpmUnityPoolList",
-				"define_package_pathname":"blueback.poolist"
+				"package_fullname":"BlueBack.Vosk.Dll",
+				"url":"https://github.com/bluebackblue/UpmVosk",
+				"define_package_pathname":"blueback.vosk"
 			},
 			{
 				"mode":"package",
-				"package_fullname":"Unity.Mathematics",
-				"url":"https://docs.unity3d.com/Packages/com.unity.mathematics@latest/index.html",
-				"define_package_pathname":"com.unity.mathematics"
+				"package_fullname":"BlueBack.JsonItem",
+				"url":"https://github.com/bluebackblue/UpmJsonItem",
+				"define_package_pathname":"blueback.jsonitem"
 			}
 		]
 	},
@@ -69,6 +63,12 @@
 				"package_fullname":"BlueBack.Vosk",
 				"url":"https://github.com/bluebackblue/UpmVosk",
 				"define_package_pathname":"blueback.vosk"
+			},
+			{
+				"mode":"package",
+				"package_fullname":"BlueBack.JsonItem",
+				"url":"https://github.com/bluebackblue/UpmJsonItem",
+				"define_package_pathname":"blueback.jsonitem"
 			}
 		]
 	}

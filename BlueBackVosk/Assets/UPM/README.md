@@ -9,12 +9,13 @@ MIT License
 
 ## 依存 / 使用ライセンス等
 ### ランタイム
-* https://github.com/bluebackblue/UpmUnityPoolList
-* https://docs.unity3d.com/Packages/com.unity.mathematics@latest/index.html
+* https://github.com/bluebackblue/UpmVosk
+* https://github.com/bluebackblue/UpmJsonItem
 ### エディター
 * https://github.com/bluebackblue/UpmVosk
 ### サンプル
 * https://github.com/bluebackblue/UpmVosk
+* https://github.com/bluebackblue/UpmJsonItem
 
 ## 動作確認
 Unity 2022.1.0b16
