@@ -188,7 +188,7 @@ namespace BlueBack.Vosk
 					short[] t_buffer = this.audioclip_execute.Update();
 					if(t_buffer != null){
 						//データあり。
-						
+
 						if(this.voskdll.RecognizerUpdate(t_buffer) == true){
 							//fix
 							string t_eventparam_jsonstring = this.voskdll.GetRecognizerResultFix();

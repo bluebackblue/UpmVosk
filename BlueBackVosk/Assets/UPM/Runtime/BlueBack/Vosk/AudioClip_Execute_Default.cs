@@ -158,7 +158,7 @@ namespace BlueBack.Vosk
 						t_blocksize = ((t_audioclip_position_max * t_audioclip_cannel - (this.position - t_position_new))) / t_audioclip_cannel;
 					}
 				}
-				
+
 				if(t_blocksize >= BLOCK_MAX){
 					if(this.audioclip.GetData(this.buffer_raw,this.position) == true){
 						//position
