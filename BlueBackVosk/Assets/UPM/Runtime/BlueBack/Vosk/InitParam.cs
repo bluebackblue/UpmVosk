@@ -19,13 +19,26 @@ namespace BlueBack.Vosk
 		*/
 		public Execute_Base execute;
 
+		/** audioclip_execute
+		*/
+		public AudioClip_Execute_Base audioclip_execute;
+
 		/** modelpath
 		*/
 		public string modelpath;
 
+
+
+		#if(false)
+
+
 		/** wordmode
 		*/
 		public bool wordmode;
+
+		/** partial_wordmode
+		*/
+		public bool partial_wordmode;
 
 		/** alternative_max
 		*/
@@ -51,20 +64,27 @@ namespace BlueBack.Vosk
 		*/
 		public int audio_use_channel;
 
+		#endif
+
 		/** CreateDefault
 		*/
 		public static InitParam CreateDefault()
 		{
 			return new InitParam(){
 				execute = null,
+				audioclip_execute = new BlueBack.Vosk.AudioClip_Execute_Default(),
 				modelpath = "",
+
+				/*
 				wordmode = true,
+				partial_wordmode = false,
 				alternative_max = 2,
 				audio_blockcount = 1024,
 				audio_sample = 16000,
 				audio_buffer_per_sec = 1,
 				audio_device_name = "",
 				audio_use_channel = 0,
+				*/
 			};
 		}
 	}

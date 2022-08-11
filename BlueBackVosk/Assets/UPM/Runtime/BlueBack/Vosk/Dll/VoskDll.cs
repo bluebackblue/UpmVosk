@@ -13,9 +13,9 @@ namespace BlueBack.Vosk.Dll
 {
 	/** VoskDll
 	*/
-	public sealed class VoskDll
+	public sealed class VoskDll : System.IDisposable
 	{
-		/** vosk
+		/** model
 		*/
 		public global::Vosk.Model model;
 
@@ -23,49 +23,165 @@ namespace BlueBack.Vosk.Dll
 		*/
 		public global::Vosk.VoskRecognizer voskrecognizer;
 
-		/** constructor
+		/** method_argument_list_getcpt
 		*/
-		public VoskDll(string a_modelpath,int a_sample,int a_alternative_max,bool a_wordmode)
+		private static System.Object[] method_argument_list_getcpt = new System.Object[1]{null};
+
+		/** Inner_ModelInstanceCheck
+		*/
+		private static bool Inner_ModelInstanceCheck(global::Vosk.Model a_model)
 		{
-			this.model = new global::Vosk.Model(a_modelpath);
-			this.voskrecognizer = new global::Vosk.VoskRecognizer(this.model,a_sample);
-			{
-				this.voskrecognizer.SetMaxAlternatives(a_alternative_max);
-				this.voskrecognizer.SetWords(a_wordmode);
+			if(a_model != null){
+				//methodinfo_find
+				System.Reflection.MethodInfo t_methodinfo_find = null;
+				{
+					System.Reflection.MethodInfo[] t_methodinfo_list = typeof(global::Vosk.Model).GetMethods(System.Reflection.BindingFlags.DeclaredOnly | System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
+					if(t_methodinfo_list != null){
+						t_methodinfo_find = System.Array.Find(t_methodinfo_list,(System.Reflection.MethodInfo a_a_methodinfo)=>{
+							return a_a_methodinfo.Name == "getCPtr";
+						});
+					}
+				}
+
+				//handle
+				if(t_methodinfo_find != null){
+					method_argument_list_getcpt[0] = a_model;
+					object t_object = t_methodinfo_find.Invoke(null,method_argument_list_getcpt);
+					if(t_object != null){
+						if(t_object.GetType() == typeof(System.Runtime.InteropServices.HandleRef)){
+							System.Runtime.InteropServices.HandleRef t_handle = (System.Runtime.InteropServices.HandleRef)t_object;
+							if(t_handle.Handle.ToInt64() != 0){
+								return true;
+							}
+						}
+					}
+				}
 			}
+
+			return false;
 		}
 
-		/** Check
+		/** constructor
 		*/
-		public bool Check()
+		public VoskDll(string a_modelpath)
 		{
 			//model
-			if(this.model == null){
-				return false;
+			this.model = new global::Vosk.Model(a_modelpath);
+			if(Inner_ModelInstanceCheck(this.model) == false){
+				if(this.model != null){
+					this.model.Dispose();
+					this.model = null;
+				}
+
+				#if(DEF_BLUEBACK_ASSERT)
+				{
+					UnityEngine.Debug.LogError("VoskDll.constructor : error");
+				}
+				#endif
 			}
 
 			//voskrecognizer
-			if(this.voskrecognizer == null){
-				return false;
-			}
-
-			return true;
+			this.voskrecognizer = null;
 		}
 
-		/** Apply
+		/** [System.IDisposable]Dispose
+		*/
+		public void Dispose()
+		{
+			//voskrecognizer
+			if(this.voskrecognizer != null){
+				this.voskrecognizer.Dispose();
+				this.voskrecognizer = null;
+			}
 
-			return(bool success,string jsonstring)
-				success == true		: 成功
-				jsonstring			: JSON。
+			//model
+			if(this.model != null){
+				this.model.Dispose();
+				this.model = null;
+			}
+		}
+
+		/** 作成。Recognizer。
+		*/
+		public void CreateRecognizer(int a_samplerate)
+		{
+			//voskrecognizer
+			if(this.model != null){
+				if(a_samplerate >= 8000){
+					this.voskrecognizer = new global::Vosk.VoskRecognizer(this.model,a_samplerate);
+				}else{
+					#if(DEF_BLUEBACK_ASSERT)
+					{
+						UnityEngine.Debug.LogError("CreateRecognizer : error");
+					}
+					#endif
+				}
+			}
+		}
+
+		/** SetWordMode
+		*/
+		public void SetWordMode(bool a_wordmode_fix,bool a_wordmode_partial)
+		{
+			//voskrecognizer
+			if(this.voskrecognizer != null){
+				this.voskrecognizer.SetWords(a_wordmode_fix);
+				this.voskrecognizer.SetPartialWords(a_wordmode_partial);
+			}
+		}
+
+		/** SetAlternative
+		*/
+		public void SetAlternative(int a_alternative)
+		{
+			if(this.voskrecognizer != null){
+				this.voskrecognizer.SetMaxAlternatives(a_alternative);
+			}
+		}
+
+		/** 削除。Recognizer。
+		*/
+		public void DeleteRecognizer()
+		{
+			//voskrecognizer
+			if(this.voskrecognizer != null){
+				this.voskrecognizer.Dispose();
+				this.voskrecognizer = null;
+			}
+		}
+
+		/** RecognizerUpdate
+
+			return == true  : fix
+			return == false : partial
 
 		*/
-		public System.ValueTuple<bool,string> Apply(byte[] a_buffer)
+		public bool RecognizerUpdate(short[] a_buffer)
 		{
-			if(this.voskrecognizer.AcceptWaveform(a_buffer,a_buffer.Length) == true){
-				return (true,this.voskrecognizer.Result());
-			}else{
-				return (false,this.voskrecognizer.PartialResult());
+			if(this.voskrecognizer != null){
+				return this.voskrecognizer.AcceptWaveform(a_buffer,a_buffer.Length);
 			}
+			return false;
+		}
+
+		/** GetRecognizerResultFix
+		*/
+		public string GetRecognizerResultFix()
+		{
+			if(this.voskrecognizer != null){
+				return this.voskrecognizer.Result();
+			}
+			return null;
+		}
+
+		/** GetRecognizerResultPartial
+		*/
+		public string GetRecognizerResultPartial()
+		{
+			if(this.voskrecognizer != null){
+				return this.voskrecognizer.PartialResult();
+			}
+			return null;
 		}
 	}
 }

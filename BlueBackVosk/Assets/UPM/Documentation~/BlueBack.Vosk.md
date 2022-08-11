@@ -14,16 +14,18 @@ MIT License
 * https://github.com/bluebackblue/UpmJsonItem
 ### エディター
 * https://github.com/bluebackblue/UpmVosk
+* https://github.com/bluebackblue/AssetLib
 ### サンプル
 * https://github.com/bluebackblue/UpmVosk
 * https://github.com/bluebackblue/UpmJsonItem
+* https://github.com/bluebackblue/AssetLib
 
 ## 動作確認
 Unity 2022.1.0b16
 
 ## UPM
 ### 最新
-* https://github.com/bluebackblue/UpmVosk.git?path=BlueBackVosk/Assets/UPM#0.0.2
+* https://github.com/bluebackblue/UpmVosk.git?path=BlueBackVosk/Assets/UPM#0.0.3
 ### 開発
 * https://github.com/bluebackblue/UpmVosk.git?path=BlueBackVosk/Assets/UPM
 

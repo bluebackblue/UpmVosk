@@ -17,7 +17,19 @@ namespace BlueBack.Vosk
 	{
 		/** [BlueBack.Vosk.Execute_Base]Event
 		*/
-		void Event(bool a_success,BlueBack.JsonItem.JsonItem a_eventparam_jsonitem);
+		void Event(BlueBack.Vosk.EventParam_Fix_WordMode a_eventparam);
+
+		/** [BlueBack.Vosk.Execute_Base]Event
+		*/
+		void Event(BlueBack.Vosk.EventParam_Fix a_eventparam);
+
+		/** [BlueBack.Vosk.Execute_Base]Event
+		*/
+		void Event(BlueBack.Vosk.EventParam_Partial_WordMode a_eventparam);
+
+		/** [BlueBack.Vosk.Execute_Base]Event
+		*/
+		void Event(BlueBack.Vosk.EventParam_Partial a_eventparam);
 	}
 }
 

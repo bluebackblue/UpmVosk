@@ -13,9 +13,17 @@ namespace BlueBack.Vosk.Samples.Simple
 		*/
 		public BlueBack.Vosk.Vosk vosk;
 
-		/** jsonstring
+		/** enable
 		*/
-		public string jsonstring;
+		public bool enable;
+
+		/** wordmode
+		*/
+		public bool wordmode;
+
+		/** alternative
+		*/
+		public int alternative;
 
 		/** Awake
 		*/
@@ -29,65 +37,132 @@ namespace BlueBack.Vosk.Samples.Simple
 		{
 			BlueBack.Vosk.InitParam t_initparam = BlueBack.Vosk.InitParam.CreateDefault();
 			{
-				t_initparam.modelpath = UnityEngine.Application.streamingAssetsPath + "/" + "vosk-model-small-ja-0.22";
-				t_initparam.audio_device_name = UnityEngine.Microphone.devices[0];
+				t_initparam.modelpath = UnityEngine.Application.streamingAssetsPath + "/Vosk/" + "vosk-model-small-ja-0.22";
 				t_initparam.execute = this;
-				t_initparam.wordmode = false;
-
-				UnityEngine.Debug.Log(t_initparam.audio_device_name);
 			}
 			this.vosk = new BlueBack.Vosk.Vosk(in t_initparam);
+
+			//audioclip_execute
+			{
+				string t_devicename = UnityEngine.Microphone.devices[0];
+				UnityEngine.Microphone.GetDeviceCaps(t_devicename,out int t_samplerate_min,out int t_samplerate_max);
+				UnityEngine.Debug.Log(string.Format("device = {0} : samplerate min = {1} : samplerate max {2}",t_devicename,t_samplerate_min,t_samplerate_max));
+
+				BlueBack.Vosk.AudioClip_Execute_Default t_audioclip_execute = t_initparam.audioclip_execute as BlueBack.Vosk.AudioClip_Execute_Default;
+				t_audioclip_execute.SetDevice(t_devicename);
+				t_audioclip_execute.SetSampleRate(t_samplerate_max);
+				t_audioclip_execute.SetUseChannel(0);
+			}
+		}
+
+		/** OnDestroy
+		*/
+		private void OnDestroy()
+		{
+			if(this.vosk != null){
+				this.vosk.Dispose();
+				this.vosk = null;
+			}
 		}
 
 		/** Update
 		*/
 		private void Update()
 		{
-			this.vosk.Update();
+			if(this.enable == true){
+				//Start
+				if(this.vosk.IsEnable() == false){
+					this.vosk.SetWordModeFix(this.wordmode,this.wordmode);
+					this.vosk.SetAlternative(this.alternative);
+					this.vosk.Start();
+				}
+
+				//Update
+				this.vosk.Update();
+			}else{
+				//End
+				if(this.vosk.IsEnable() == true){
+					this.vosk.End();
+				}
+			}
 		}
 
 		/** [BlueBack.Vosk.Execute_Base]Event
 		*/
-		public void Event(bool a_success,BlueBack.JsonItem.JsonItem a_eventparam_jsonitem)
+		public void Event(BlueBack.Vosk.EventParam_Fix_WordMode a_eventparam)
 		{
-			//jsonstring
-			this.jsonstring = a_eventparam_jsonitem.ConvertToJsonString();
+			if(a_eventparam.text != null){
+				if(a_eventparam.text.Length > 0){
+					UnityEngine.Debug.Log(string.Format("fix wordmode : text = {0}",a_eventparam.text));
+				}
+			}
 
-			//eventparam_jsonitem
-			if(a_success == true){
-				if(this.vosk.param.vosk_wordmode == true){
-					BlueBack.Vosk.EventParam_WordMode t_eventparam = JsonItem.Convert.JsonItemToObject<BlueBack.Vosk.EventParam_WordMode>(a_eventparam_jsonitem);
-					if(t_eventparam.alternatives != null){
-						if(t_eventparam.alternatives.Length > 0){
-							for(int ii=0;ii<t_eventparam.alternatives.Length;ii++){
-								if(t_eventparam.alternatives[ii].text != null){
-									if(t_eventparam.alternatives[ii].text.Length > 0){
-										UnityEngine.Debug.Log(string.Format("{0} : {1} : [{2}] word = {3}",ii,t_eventparam.alternatives[ii].confidence,t_eventparam.alternatives[ii].text,t_eventparam.alternatives[ii].result.Length));
-									}
-								}
-							}
-						}
-					}
-				}else{
-					BlueBack.Vosk.EventParam t_eventparam = JsonItem.Convert.JsonItemToObject<BlueBack.Vosk.EventParam>(a_eventparam_jsonitem);
-					if(t_eventparam.alternatives != null){
-						if(t_eventparam.alternatives.Length > 0){
-							for(int ii=0;ii<t_eventparam.alternatives.Length;ii++){
-								if(t_eventparam.alternatives[ii].text != null){
-									if(t_eventparam.alternatives[ii].text.Length > 0){
-										UnityEngine.Debug.Log(string.Format("{0} : {1} : [{2}]",ii,t_eventparam.alternatives[ii].confidence,t_eventparam.alternatives[ii].text));
-									}
-								}
+			if(a_eventparam.result != null){
+				for(int ii=0;ii<a_eventparam.result.Length;ii++){
+					UnityEngine.Debug.Log(string.Format("fix wordmode[{0}] : conf = {1} : word = {2}",ii,a_eventparam.result[ii].conf,a_eventparam.result[ii].word));
+				}
+			}
+
+			if(a_eventparam.alternatives != null){
+				for(int ii=0;ii<a_eventparam.alternatives.Length;ii++){
+					if(a_eventparam.alternatives[ii].text != null){
+						if(a_eventparam.alternatives[ii].text.Length > 0){
+							UnityEngine.Debug.Log(string.Format("fix wordmode[{0}] : confidence = {1} : text = [{2}]",ii,a_eventparam.alternatives[ii].confidence,a_eventparam.alternatives[ii].text));
+							for(int jj=0;jj<a_eventparam.alternatives[ii].result.Length;jj++){
+								UnityEngine.Debug.Log(string.Format("fix wordmode[{0}] : word = {1}",jj,a_eventparam.alternatives[ii].result[jj].word));
 							}
 						}
 					}
 				}
-			}else{
-				BlueBack.Vosk.EventParam_Partial t_eventparam = JsonItem.Convert.JsonItemToObject<BlueBack.Vosk.EventParam_Partial>(a_eventparam_jsonitem);
-				if(t_eventparam.partial != null){
-					if(t_eventparam.partial.Length > 0){
-						UnityEngine.Debug.Log(string.Format("{0}",t_eventparam.partial));
+			}
+		}
+
+		/** [BlueBack.Vosk.Execute_Base]Event
+		*/
+		public void Event(BlueBack.Vosk.EventParam_Fix a_eventparam)
+		{
+			if(a_eventparam.text != null){
+				if(a_eventparam.text.Length > 0){
+					UnityEngine.Debug.Log(string.Format("fix : text = {0}",a_eventparam.text));
+				}
+			}
+
+			if(a_eventparam.alternatives != null){
+				for(int ii=0;ii<a_eventparam.alternatives.Length;ii++){
+					if(a_eventparam.alternatives[ii].text != null){
+						if(a_eventparam.alternatives[ii].text.Length > 0){
+							UnityEngine.Debug.Log(string.Format("fix[{0}] : confidence = {1} : text = [{2}]",ii,a_eventparam.alternatives[ii].confidence,a_eventparam.alternatives[ii].text));
+						}
 					}
+				}
+			}
+		}
+
+		/** [BlueBack.Vosk.Execute_Base]Event
+		*/
+		public void Event(BlueBack.Vosk.EventParam_Partial_WordMode a_eventparam)
+		{
+			if(a_eventparam.partial != null){
+				if(a_eventparam.partial.Length > 0){
+					UnityEngine.Debug.Log(string.Format("partial wordmode : partial = {0}",a_eventparam.partial));
+				}
+
+			}
+
+			if(a_eventparam.partial_result != null){
+				for(int ii=0;ii<a_eventparam.partial_result.Length;ii++){
+					UnityEngine.Debug.Log(string.Format("partial wordmode[{0}] : conf = {1} : word = {2}",ii,a_eventparam.partial_result[ii].conf,a_eventparam.partial_result[ii].word));
+				}
+			}
+		}
+
+		/** [BlueBack.Vosk.Execute_Base]Event
+		*/
+		public void Event(BlueBack.Vosk.EventParam_Partial a_eventparam)
+		{
+			if(a_eventparam.partial != null){
+				if(a_eventparam.partial.Length > 0){
+					UnityEngine.Debug.Log(string.Format("partial : partial = {0}",a_eventparam.partial));
 				}
 			}
 		}

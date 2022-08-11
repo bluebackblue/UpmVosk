@@ -167,15 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf42cf24ff7b7e4f8c07a5fc907eb40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vosk:
-    param:
-      audio_device_name: 
-      audio_use_channel: 0
-      microphone_audioclip: {fileID: 0}
-      microphone_position: 0
-      microphone_buffer_float: []
-      microphone_buffer_byte: 
-      microphone_blockcount_multi: 0
-      microphone_blockcount_single: 0
-      vosk_wordmode: 0
-  jsonstring: 
+  enable: 0
+  wordmode: 1
+  alternative: 0

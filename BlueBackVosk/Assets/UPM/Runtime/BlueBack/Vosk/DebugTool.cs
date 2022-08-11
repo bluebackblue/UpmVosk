@@ -15,9 +15,10 @@ namespace BlueBack.Vosk
 	*/
 	public static class DebugTool
 	{
-		/** assertproc
-		*/
 		#if(DEF_BLUEBACK_ASSERT)
+
+		/** DefaultAssertProc
+		*/
 		public static void DefaultAssertProc(System.Exception a_exception,string a_message)
 		{
 			if(a_message != null){
@@ -30,66 +31,124 @@ namespace BlueBack.Vosk
 
 			UnityEngine.Debug.Assert(false);
 		}
-		public delegate void AssertProcType(System.Exception a_exception,string a_message);
-		public static AssertProcType assertproc = DefaultAssertProc;
-		#endif
 
-		/** logproc
+		/** AssertProcType
 		*/
-		#if(DEF_BLUEBACK_LOG)
-		public static void DefaultLogProc(string a_message)
-		{
-			UnityEngine.Debug.Log(a_message);
-		}
-		public delegate void LogProcType(string a_message);
-		public static LogProcType logproc = DebugTool.DefaultLogProc;
-		#endif
+		public delegate void AssertProcType(System.Exception a_exception,string a_message);
+
+		/** assertproc
+		*/
+		public static AssertProcType assertproc = DefaultAssertProc;
 
 		/** Assert
 		*/
-		#if(DEF_BLUEBACK_ASSERT)
 		public static void Assert(bool a_flag,System.Exception a_exception = null)
 		{
 			if(a_flag != true){
 				DebugTool.assertproc(a_exception,null);
 			}
 		}
-		#endif
 
 		/** Assert
 		*/
-		#if(DEF_BLUEBACK_ASSERT)
 		public static void Assert(bool a_flag,string a_message)
 		{
 			if(a_flag != true){
 				DebugTool.assertproc(null,a_message);
 			}
 		}
+
 		#endif
 
 		#if(DEF_BLUEBACK_LOG)
+
+		/** DefaultLogProc
+		*/
+		public static void DefaultLogProc(string a_message)
+		{
+			UnityEngine.Debug.Log(a_message);
+		}
+
+		/** LogProcType
+		*/
+		public delegate void LogProcType(string a_message);
+
+		/** logproc
+		*/
+		public static LogProcType logproc = DebugTool.DefaultLogProc;
+
+		/** Log
+		*/
 		public static void Log(string a_message)
 		{
 			DebugTool.logproc(a_message);
 		}
+
 		#endif
+
+		#if(DEF_BLUEBACK_DETAIL)
+
+		/** DefaultDetailProc
+		*/
+		public static void DefaultDetailProc(string a_message)
+		{
+			UnityEngine.Debug.Log(a_message);
+		}
+
+		/** DetailProcType
+		*/
+		public delegate void DetailProcType(string a_message);
+
+		/** detailproc
+		*/
+		public static DetailProcType detailproc = DebugTool.DefaultDetailProc;
+
+		/** Detail
+		*/
+		public static void Detail(string a_message)
+		{
+			DebugTool.detailproc(a_message);
+		}
+
+		#endif
+
+		#if(UNITY_EDITOR)
+
+		/** DefaultEditorLogProc
+		*/
+		public static void DefaultEditorLogProc(string a_message_log,string a_message_logerror)
+		{
+			if(a_message_log != null){
+				UnityEngine.Debug.Log(a_message_log);
+			}
+
+			if(a_message_logerror != null){
+				UnityEngine.Debug.Log(a_message_logerror);
+			}
+		}
+
+		/** EditorLogProcType
+		*/
+		public delegate void EditorLogProcType(string a_message_log,string a_message_logerror);
+
+		/** editorlogproc
+		*/
+		public static EditorLogProcType editorlogproc = DebugTool.DefaultEditorLogProc;
 
 		/** EditorLog
 		*/
-		#if(UNITY_EDITOR)
-		public static void EditorLog(string a_text)
+		public static void EditorLog(string a_message)
 		{
-			UnityEngine.Debug.Log(a_text);
+			DebugTool.editorlogproc(a_message,null);
 		}
-		#endif
 
 		/** EditorLogError
 		*/
-		#if(UNITY_EDITOR)
-		public static void EditorLogError(string a_text)
+		public static void EditorLogError(string a_message)
 		{
-			UnityEngine.Debug.LogError(a_text);
+			DebugTool.editorlogproc(null,a_message);
 		}
+
 		#endif
 	}
 }

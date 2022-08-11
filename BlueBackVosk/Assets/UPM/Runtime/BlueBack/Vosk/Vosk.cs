@@ -13,116 +13,219 @@ namespace BlueBack.Vosk
 {
 	/** Vosk
 	*/
-	#if(UNITY_EDITOR)
-	[System.Serializable]
-	#endif
 	public sealed class Vosk : System.IDisposable
 	{
-		/** param
-		*/
-		public Param param;
-
 		/** voskdll
 		*/
 		public Dll.VoskDll voskdll;
+		public bool voskdll_wordmode_fix;
+		public bool voskdll_wordmode_partial;
+		public int voskdll_alternative;
+		public bool voskdll_enable;
 
 		/** execute
 		*/
 		public Execute_Base execute;
 
+		/** audioclip_execute
+		*/
+		public AudioClip_Execute_Base audioclip_execute;
+
+		/** debugview
+		*/
+		#if(DEF_BLUEBACK_VOSK_DEBUGVIEW)
+		public DebugView_MonoBehaviour debugview_monobehaviour;
+		#endif
+
 		/** constructor
 		*/
 		public Vosk(in InitParam a_initparam)
 		{
-			//audio
-			{
-				this.param.audio_device_name = a_initparam.audio_device_name;
-				this.param.audio_use_channel = a_initparam.audio_use_channel;
-			}
-
-			//microphone
-			{
-				UnityEngine.AudioClip t_audioclip = UnityEngine.Microphone.Start(this.param.audio_device_name,true,a_initparam.audio_buffer_per_sec,a_initparam.audio_sample);
-
-				this.param.microphone_audioclip = t_audioclip;
-				this.param.microphone_position = 0;
-				this.param.microphone_blockcount_multi = a_initparam.audio_blockcount * t_audioclip.channels;
-				this.param.microphone_blockcount_single = a_initparam.audio_blockcount;
-				this.param.microphone_buffer_float = new float[a_initparam.audio_blockcount * t_audioclip.channels];
-				this.param.microphone_buffer_byte = new byte[a_initparam.audio_blockcount * 2];
-			}
-
-			//vosk
-			{
-				this.param.vosk_wordmode = a_initparam.wordmode;
-			}
-
-			//vosk_dll
-			this.voskdll = new Dll.VoskDll(
-				a_initparam.modelpath,
-				a_initparam.audio_sample,
-				a_initparam.alternative_max,
-				a_initparam.wordmode
-			);
-
 			//execute
 			this.execute = a_initparam.execute;
+
+			//audioclip_execute
+			this.audioclip_execute = a_initparam.audioclip_execute;
+
+			//vosk_dll
+			this.voskdll = new Dll.VoskDll(a_initparam.modelpath);
+			this.voskdll_wordmode_fix = false;
+			this.voskdll_wordmode_partial = false;
+			this.voskdll_alternative = 1;
+			this.voskdll_enable = false;
+
+			//debugview
+			#if(DEF_BLUEBACK_VOSK_DEBUGVIEW)
+			{
+				this.debugview_monobehaviour = new UnityEngine.GameObject("vosk_debugview").AddComponent<DebugView_MonoBehaviour>();
+				this.debugview_monobehaviour.vosk = this;
+				UnityEngine.GameObject.DontDestroyOnLoad(this.debugview_monobehaviour.gameObject);
+			}
+			#endif
 		}
 
 		/** [System.IDisposable]Dispose。
 		*/
 		public void Dispose()
 		{
+			//debugview
+			#if(DEF_BLUEBACK_VOSK_DEBUGVIEW)
+			{
+				if(this.debugview_monobehaviour != null){
+					UnityEngine.GameObject.Destroy(this.debugview_monobehaviour.gameObject);
+					this.debugview_monobehaviour = null;
+				}
+			}
+			#endif
+
+			//audioclip_execute
+			if(this.audioclip_execute != null){
+				this.audioclip_execute.End();
+				this.audioclip_execute = null;
+			}
+
+			//voskdll
+			if(this.voskdll != null){
+				this.voskdll.Dispose();
+				this.voskdll = null;
+			}
+		}
+
+		/** 開始。
+		*/
+		public void Start()
+		{
+			#if(DEF_BLUEBACK_LOG)
+			DebugTool.Log("BlueBack.Vosk.Start");
+			#endif
+
+			int t_samplerate;
+
+			//audioclip_execute.Start
+			try{
+				this.audioclip_execute.Start();
+				t_samplerate = this.audioclip_execute.GetSampleRate();
+			}catch(System.Exception t_exception){
+				#if(DEF_BLUEBACK_ASSERT)
+				BlueBack.Vosk.DebugTool.Assert(false,t_exception);
+				#endif
+
+				t_samplerate = 0;
+			}
+
+			//voskdll
+			if((this.voskdll != null)&&(this.audioclip_execute != null)){
+				this.voskdll.CreateRecognizer(t_samplerate);
+				this.voskdll.SetWordMode(this.voskdll_wordmode_fix,this.voskdll_wordmode_partial);
+				this.voskdll.SetAlternative(this.voskdll_alternative);
+			}
+
+			//voskdall_enable
+			this.voskdll_enable = true;
+		}
+
+		/** 終了。
+		*/
+		public void End()
+		{
+			#if(DEF_BLUEBACK_LOG)
+			DebugTool.Log("BlueBack.Vosk.End");
+			#endif
+
+			//audioclip_execute
+			try{
+				if(this.audioclip_execute != null){
+					this.audioclip_execute.End();
+				}
+			}catch(System.Exception t_exception){
+				#if(DEF_BLUEBACK_ASSERT)
+				BlueBack.Vosk.DebugTool.Assert(false,t_exception);
+				#endif
+			}
+
+			//voskdll
+			if(this.voskdll != null){
+				this.voskdll.DeleteRecognizer();
+			}
+		}
+
+		/** IsEnable
+		*/
+		public bool IsEnable()
+		{
+			if(this.voskdll.voskrecognizer == null){
+				return false;
+			}else{
+				return true;
+			}
+		}
+
+		/** SetWordModeFix
+		*/
+		public void SetWordModeFix(bool a_wordmode_fix,bool a_wordmode_partial)
+		{
+			//SetWordMode
+			this.voskdll_wordmode_fix = a_wordmode_fix;
+			this.voskdll_wordmode_partial = a_wordmode_partial;
+			this.voskdll.SetWordMode(a_wordmode_fix,a_wordmode_partial);
+		}
+
+		/** SetAlternative
+		*/
+		public void SetAlternative(int a_voskdll_alternative)
+		{
+			//SetAlternative
+			this.voskdll_alternative = a_voskdll_alternative;
+			this.voskdll.SetAlternative(a_voskdll_alternative);
 		}
 
 		/** Update
 		*/
 		public void Update()
 		{
-			if(UnityEngine.Microphone.IsRecording(this.param.audio_device_name) == false){			
-				return;
-			}
-
-			if(this.voskdll.Check() == false){
-				return;
-			}
-
-			{
-				int t_position_new = UnityEngine.Microphone.GetPosition(this.param.audio_device_name);
-
-				//count
-				int t_count;
-				{
-					if(t_position_new >= this.param.microphone_position){
-						t_count = t_position_new - this.param.microphone_position;
-					}else{
-						t_count = (this.param.microphone_audioclip.samples * this.param.microphone_audioclip.channels - (this.param.microphone_position - t_position_new));
-					}
-				}
-
-				if(t_count >= this.param.microphone_blockcount_multi){
-					int ii_max = t_count / this.param.microphone_blockcount_multi;
-					for(int ii=0;ii<ii_max;ii++){
-						//GetData
-						if(this.param.microphone_audioclip.GetData(this.param.microphone_buffer_float,this.param.microphone_position) == true){
-							for(int jj=0;jj<this.param.microphone_blockcount_single;jj++){
-								byte[] t_byte_2 = System.BitConverter.GetBytes((short)(this.param.microphone_buffer_float[jj * this.param.microphone_audioclip.channels + this.param.audio_use_channel] * short.MaxValue));
-								this.param.microphone_buffer_byte[jj * 2 + 0] = t_byte_2[0];
-								this.param.microphone_buffer_byte[jj * 2 + 1] = t_byte_2[1];
+			if(this.voskdll != null){
+				if(this.voskdll.voskrecognizer != null){
+					short[] t_buffer = this.audioclip_execute.Update();
+					if(t_buffer != null){
+						//データあり。
+						
+						if(this.voskdll.RecognizerUpdate(t_buffer) == true){
+							//fix
+							string t_eventparam_jsonstring = this.voskdll.GetRecognizerResultFix();
+							if(t_eventparam_jsonstring != null){
+								BlueBack.JsonItem.JsonItem t_eventparam_jsonitem = BlueBack.JsonItem.Convert.JsonStringToJsonItem(BlueBack.JsonItem.Normalize.Convert(t_eventparam_jsonstring));
+								if(this.voskdll_wordmode_fix == true){
+									BlueBack.Vosk.EventParam_Fix_WordMode t_eventparam = JsonItem.Convert.JsonItemToObject<BlueBack.Vosk.EventParam_Fix_WordMode>(t_eventparam_jsonitem);
+									this.execute.Event(t_eventparam);
+								}else{
+									BlueBack.Vosk.EventParam_Fix t_eventparam = JsonItem.Convert.JsonItemToObject<BlueBack.Vosk.EventParam_Fix>(t_eventparam_jsonitem);
+									this.execute.Event(t_eventparam);
+								}
+							}
+						}else{
+							//partial
+							string t_eventparam_jsonstring = this.voskdll.GetRecognizerResultPartial();
+							if(t_eventparam_jsonstring != null){
+								BlueBack.JsonItem.JsonItem t_eventparam_jsonitem = BlueBack.JsonItem.Convert.JsonStringToJsonItem(BlueBack.JsonItem.Normalize.Convert(t_eventparam_jsonstring));
+								if(this.voskdll_wordmode_partial == true){
+									BlueBack.Vosk.EventParam_Partial_WordMode t_eventparam = JsonItem.Convert.JsonItemToObject<BlueBack.Vosk.EventParam_Partial_WordMode>(t_eventparam_jsonitem);
+									this.execute.Event(t_eventparam);
+								}else{
+									BlueBack.Vosk.EventParam_Partial t_eventparam = JsonItem.Convert.JsonItemToObject<BlueBack.Vosk.EventParam_Partial>(t_eventparam_jsonitem);
+									this.execute.Event(t_eventparam);
+								}
 							}
 						}
-
-						//microphone_position
-						this.param.microphone_position = (this.param.microphone_position + this.param.microphone_blockcount_multi) % this.param.microphone_audioclip.samples * this.param.microphone_audioclip.channels;
-
-						//Apply
-						{
-							(bool t_success,string t_eventparam_jsonstring) = this.voskdll.Apply(this.param.microphone_buffer_byte);
-							BlueBack.JsonItem.JsonItem t_eventparam_jsonitem = BlueBack.JsonItem.Convert.JsonStringToJsonItem(BlueBack.JsonItem.Normalize.Convert(t_eventparam_jsonstring));
-							this.execute.Event(t_success,t_eventparam_jsonitem);
-						}
 					}
+				}else{
+					#if(DEF_BLUEBACK_LOG)
+					DebugTool.Assert(false,"voskrecognizer == null");
+					#endif
 				}
+			}else{
+				#if(DEF_BLUEBACK_LOG)
+				DebugTool.Assert(false,"voskdll == null");
+				#endif
 			}
 		}
 	}
