@@ -12,6 +12,7 @@ MIT License
 * https://github.com/alphacep/vosk-api
 * https://github.com/bluebackblue/UpmVosk
 * https://github.com/bluebackblue/UpmJsonItem
+* https://github.com/bluebackblue/AssetLib
 ### エディター
 * https://github.com/bluebackblue/UpmVosk
 * https://github.com/bluebackblue/AssetLib
@@ -25,7 +26,7 @@ Unity 2022.1.0b16
 
 ## UPM
 ### 最新
-* https://github.com/bluebackblue/UpmVosk.git?path=BlueBackVosk/Assets/UPM#0.0.3
+* https://github.com/bluebackblue/UpmVosk.git?path=BlueBackVosk/Assets/UPM#0.0.4
 ### 開発
 * https://github.com/bluebackblue/UpmVosk.git?path=BlueBackVosk/Assets/UPM
 

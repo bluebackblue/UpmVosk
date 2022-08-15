@@ -45,6 +45,12 @@
 				"package_fullname":"BlueBack.JsonItem",
 				"url":"https://github.com/bluebackblue/UpmJsonItem",
 				"define_package_pathname":"blueback.jsonitem"
+			},
+			{
+				"mode":"package",
+				"package_fullname":"BlueBack.AssetLib",
+				"url":"https://github.com/bluebackblue/AssetLib",
+				"define_package_pathname":"blueback.assetlib"
 			}
 		]
 	},

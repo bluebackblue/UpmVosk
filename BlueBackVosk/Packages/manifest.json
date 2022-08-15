@@ -4,6 +4,7 @@
     "blueback.code": "https://github.com/bluebackblue/UpmCode.git?path=BlueBackCode/Assets/UPM",
     "blueback.install": "https://github.com/bluebackblue/UpmInstall.git?path=BlueBackInstall/Assets/UPM",
     "blueback.jsonitem": "https://github.com/bluebackblue/UpmJsonItem.git?path=BlueBackJsonItem/Assets/UPM",
+    "blueback.request": "https://github.com/bluebackblue/UpmRequest.git?path=BlueBackRequest/Assets/UPM",
     "blueback.versionmanager": "https://github.com/bluebackblue/UpmVersionManager.git?path=BlueBackVersionManager/Assets/UPM",
     "com.unity.collab-proxy": "1.15.15",
     "com.unity.ide.rider": "3.0.13",

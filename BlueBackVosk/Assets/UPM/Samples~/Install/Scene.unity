@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &524653834
+--- !u!1 &381406990
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,8 +131,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 524653835}
-  - component: {fileID: 524653836}
+  - component: {fileID: 381406991}
+  - component: {fileID: 381406992}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -140,13 +140,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &524653835
+--- !u!4 &381406991
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524653834}
+  m_GameObject: {fileID: 381406990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -155,18 +155,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &524653836
+--- !u!114 &381406992
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524653834}
+  m_GameObject: {fileID: 381406990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bf42cf24ff7b7e4f8c07a5fc907eb40, type: 3}
+  m_Script: {fileID: 11500000, guid: dab2030d00f93aa42a5d7428aeade684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enable: 1
-  wordmode: 1
-  alternative: 3
+  modellist_textasset: {fileID: 4900000, guid: 4c87952e5156c684d851340cebb3b373, type: 3}
+  step: 0
