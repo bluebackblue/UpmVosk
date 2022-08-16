@@ -5,9 +5,9 @@
 #if(!DEF_BLUEBACK_VOSK_SAMPLES_DISABLE)
 namespace BlueBack.Vosk.Samples.Simple
 {
-	/** Main_Monobehaviour
+	/** Main_MonoBehaviour
 	*/
-	public sealed class Main_Monobehaviour : UnityEngine.MonoBehaviour , BlueBack.Vosk.Execute_Base
+	public sealed class Main_MonoBehaviour : UnityEngine.MonoBehaviour , BlueBack.Vosk.Execute_Base
 	{
 		/** vosk
 		*/
@@ -37,8 +37,12 @@ namespace BlueBack.Vosk.Samples.Simple
 		{
 			BlueBack.Vosk.InitParam t_initparam = BlueBack.Vosk.InitParam.CreateDefault();
 			{
-				t_initparam.modelpath = UnityEngine.Application.streamingAssetsPath + "/Vosk/" + "vosk-model-small-ja-0.22";
+				//t_initparam.modelpath = UnityEngine.Application.streamingAssetsPath + "/Vosk/" + "vosk-model-small-ja-0.22";
+				//t_initparam.modelpath = UnityEngine.Application.streamingAssetsPath + "/Vosk/" + "vosk-model-ja-0.22";
+				t_initparam.modelpath = UnityEngine.Application.persistentDataPath + "/vosk-model-small-ja-0.22";
 				t_initparam.execute = this;
+
+				UnityEngine.Debug.Log(t_initparam.modelpath);
 			}
 			this.vosk = new BlueBack.Vosk.Vosk(in t_initparam);
 

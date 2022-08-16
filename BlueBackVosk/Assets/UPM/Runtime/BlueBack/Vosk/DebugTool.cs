@@ -15,37 +15,22 @@ namespace BlueBack.Vosk
 	*/
 	public static class DebugTool
 	{
-		#if(DEF_BLUEBACK_ASSERT)
-
-		/** DefaultAssertProc
-		*/
-		public static void DefaultAssertProc(System.Exception a_exception,string a_message)
-		{
-			if(a_message != null){
-				UnityEngine.Debug.LogError(a_message);
-			}
-
-			if(a_exception != null){
-				UnityEngine.Debug.LogError(a_exception.ToString());
-			}
-
-			UnityEngine.Debug.Assert(false);
-		}
-
-		/** AssertProcType
-		*/
-		public delegate void AssertProcType(System.Exception a_exception,string a_message);
+		#if(DEF_BLUEBACK_DEBUG_ASSERT)
 
 		/** assertproc
 		*/
-		public static AssertProcType assertproc = DefaultAssertProc;
+		#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+		public static BlueBack.Debug.Assert.ProcType assertproc = BlueBack.Debug.Assert.Default;
+		#endif
 
 		/** Assert
 		*/
 		public static void Assert(bool a_flag,System.Exception a_exception = null)
 		{
 			if(a_flag != true){
-				DebugTool.assertproc(a_exception,null);
+				#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+				DebugTool.assertproc(null,a_exception);
+				#endif
 			}
 		}
 
@@ -54,99 +39,82 @@ namespace BlueBack.Vosk
 		public static void Assert(bool a_flag,string a_message)
 		{
 			if(a_flag != true){
-				DebugTool.assertproc(null,a_message);
+				#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+				DebugTool.assertproc(a_message,null);
+				#endif
 			}
 		}
 
 		#endif
 
-		#if(DEF_BLUEBACK_LOG)
-
-		/** DefaultLogProc
-		*/
-		public static void DefaultLogProc(string a_message)
-		{
-			UnityEngine.Debug.Log(a_message);
-		}
-
-		/** LogProcType
-		*/
-		public delegate void LogProcType(string a_message);
+		#if(DEF_BLUEBACK_DEBUG_LOG)
 
 		/** logproc
 		*/
-		public static LogProcType logproc = DebugTool.DefaultLogProc;
+		#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+		public static BlueBack.Debug.Log.ProcType logproc = BlueBack.Debug.Log.Default;
+		#endif
 
 		/** Log
 		*/
 		public static void Log(string a_message)
 		{
+			#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
 			DebugTool.logproc(a_message);
+			#endif
 		}
 
 		#endif
 
-		#if(DEF_BLUEBACK_DETAIL)
-
-		/** DefaultDetailProc
-		*/
-		public static void DefaultDetailProc(string a_message)
-		{
-			UnityEngine.Debug.Log(a_message);
-		}
-
-		/** DetailProcType
-		*/
-		public delegate void DetailProcType(string a_message);
+		#if(DEF_BLUEBACK_DEBUG_DETAIL)
 
 		/** detailproc
 		*/
-		public static DetailProcType detailproc = DebugTool.DefaultDetailProc;
+		#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+		public static BlueBack.Debug.Detail.ProcType detailproc = BlueBack.Debug.Detail.Default;
+		#endif
 
 		/** Detail
 		*/
 		public static void Detail(string a_message)
 		{
+			#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
 			DebugTool.detailproc(a_message);
+			#endif
 		}
 
 		#endif
 
 		#if(UNITY_EDITOR)
 
-		/** DefaultEditorLogProc
-		*/
-		public static void DefaultEditorLogProc(string a_message_log,string a_message_logerror)
-		{
-			if(a_message_log != null){
-				UnityEngine.Debug.Log(a_message_log);
-			}
-
-			if(a_message_logerror != null){
-				UnityEngine.Debug.Log(a_message_logerror);
-			}
-		}
-
-		/** EditorLogProcType
-		*/
-		public delegate void EditorLogProcType(string a_message_log,string a_message_logerror);
-
 		/** editorlogproc
 		*/
-		public static EditorLogProcType editorlogproc = DebugTool.DefaultEditorLogProc;
+		#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+		public static BlueBack.Debug.Log.ProcType editorlogproc = BlueBack.Debug.Log.Default;
+		#endif
+
+		/** editorerrorlogproc
+		*/
+		#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+		public static BlueBack.Debug.ErrorLog.ProcType editorerrorlogproc = BlueBack.Debug.ErrorLog.Default;
+		#endif
 
 		/** EditorLog
 		*/
 		public static void EditorLog(string a_message)
 		{
-			DebugTool.editorlogproc(a_message,null);
+			#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+			DebugTool.editorlogproc(a_message);
+			#endif
 		}
 
-		/** EditorLogError
+		/** EditorErrorLog
 		*/
-		public static void EditorLogError(string a_message)
+		public static void EditorErrorLog(string a_message)
 		{
-			DebugTool.editorlogproc(null,a_message);
+			#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+			DebugTool.editorerrorlogproc(a_message);
+			#endif
 		}
 
 		#endif

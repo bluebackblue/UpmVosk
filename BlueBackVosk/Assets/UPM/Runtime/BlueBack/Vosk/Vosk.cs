@@ -95,7 +95,7 @@ namespace BlueBack.Vosk
 		*/
 		public void Start()
 		{
-			#if(DEF_BLUEBACK_LOG)
+			#if(DEF_BLUEBACK_DEBUG_LOG)
 			DebugTool.Log("BlueBack.Vosk.Start");
 			#endif
 
@@ -106,7 +106,7 @@ namespace BlueBack.Vosk
 				this.audioclip_execute.Start();
 				t_samplerate = this.audioclip_execute.GetSampleRate();
 			}catch(System.Exception t_exception){
-				#if(DEF_BLUEBACK_ASSERT)
+				#if(DEF_BLUEBACK_DEBUG_ASSERT)
 				BlueBack.Vosk.DebugTool.Assert(false,t_exception);
 				#endif
 
@@ -128,7 +128,7 @@ namespace BlueBack.Vosk
 		*/
 		public void End()
 		{
-			#if(DEF_BLUEBACK_LOG)
+			#if(DEF_BLUEBACK_DEBUG_LOG)
 			DebugTool.Log("BlueBack.Vosk.End");
 			#endif
 
@@ -138,7 +138,7 @@ namespace BlueBack.Vosk
 					this.audioclip_execute.End();
 				}
 			}catch(System.Exception t_exception){
-				#if(DEF_BLUEBACK_ASSERT)
+				#if(DEF_BLUEBACK_DEBUG_ASSERT)
 				BlueBack.Vosk.DebugTool.Assert(false,t_exception);
 				#endif
 			}
@@ -218,12 +218,12 @@ namespace BlueBack.Vosk
 						}
 					}
 				}else{
-					#if(DEF_BLUEBACK_LOG)
+					#if(DEF_BLUEBACK_DEBUG_LOG)
 					DebugTool.Assert(false,"voskrecognizer == null");
 					#endif
 				}
 			}else{
-				#if(DEF_BLUEBACK_LOG)
+				#if(DEF_BLUEBACK_DEBUG_LOG)
 				DebugTool.Assert(false,"voskdll == null");
 				#endif
 			}

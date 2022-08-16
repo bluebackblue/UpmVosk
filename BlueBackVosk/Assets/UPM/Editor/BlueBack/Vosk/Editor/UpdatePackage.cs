@@ -77,7 +77,7 @@ namespace BlueBack.Vosk.Editor
 									t_text = t_webrequest.downloadHandler.text;
 								}
 								#if(UNITY_EDITOR)
-								DebugTool.EditorLogError(a_url + " : " + t_webrequest.error + " : " + t_text);
+								DebugTool.EditorErrorLog(a_url + " : " + t_webrequest.error + " : " + t_text);
 								#endif
 								return null;
 							}else{
@@ -87,7 +87,7 @@ namespace BlueBack.Vosk.Editor
 					}
 				}
 			}catch(System.Exception t_exception){
-				DebugTool.EditorLogError(a_url + " : " + t_exception.Message + "\n" + t_exception.StackTrace);
+				DebugTool.EditorErrorLog(a_url + " : " + t_exception.Message + "\n" + t_exception.StackTrace);
 				return null;
 			}
 		}
@@ -108,19 +108,19 @@ namespace BlueBack.Vosk.Editor
 						return t_text;
 					}else{
 						#if(UNITY_EDITOR)
-						DebugTool.EditorLogError(t_url + " : text == null");
+						DebugTool.EditorErrorLog(t_url + " : text == null");
 						#endif
 						return null;
 					}
 				}else{
 					#if(UNITY_EDITOR)
-					DebugTool.EditorLogError(t_url + " : binary == null");
+					DebugTool.EditorErrorLog(t_url + " : binary == null");
 					#endif
 					return null;
 				}
 			}catch(System.Exception t_exception){
 				#if(UNITY_EDITOR)
-				DebugTool.EditorLogError(t_url + " : " + t_exception.Message + "\n" + t_exception.StackTrace);
+				DebugTool.EditorErrorLog(t_url + " : " + t_exception.Message + "\n" + t_exception.StackTrace);
 				#endif
 				return null;
 			}

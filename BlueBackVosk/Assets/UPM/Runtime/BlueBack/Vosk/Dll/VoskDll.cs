@@ -73,7 +73,7 @@ namespace BlueBack.Vosk.Dll
 					this.model = null;
 				}
 
-				#if(DEF_BLUEBACK_ASSERT)
+				#if(DEF_BLUEBACK_DEBUG_ASSERT)
 				{
 					UnityEngine.Debug.LogError("VoskDll.constructor : error");
 				}
@@ -110,7 +110,7 @@ namespace BlueBack.Vosk.Dll
 				if(a_samplerate >= 8000){
 					this.voskrecognizer = new global::Vosk.VoskRecognizer(this.model,a_samplerate);
 				}else{
-					#if(DEF_BLUEBACK_ASSERT)
+					#if(DEF_BLUEBACK_DEBUG_ASSERT)
 					{
 						UnityEngine.Debug.LogError("CreateRecognizer : error");
 					}

@@ -4,9 +4,9 @@
 	"git_url":"https://github.com/bluebackblue/UpmVosk",
 	"git_api":"https://api.github.com/repos/bluebackblue/UpmVosk",
 	"git_path":"BlueBackVosk/Assets/UPM",
-	"discription_simple":"ＧＬ操作",
+	"discription_simple":"Vosk操作",
 	"discription_detal":[
-		"ＶＯＳＫ操作",
+		"Vosk操作",
 		"* 音声認識",
 		""
 	],
@@ -25,7 +25,9 @@
 	"root_readmemd_path":"../../README.md",
 	"need_unity_version":"2020.1",
 	"asmdef_runtime":{
-		"define_list":[
+		"define_constraint_list":[
+		],
+		"version_define_list":[
 		],
 		"reference_list":[
 			{
@@ -51,11 +53,19 @@
 				"package_fullname":"BlueBack.AssetLib",
 				"url":"https://github.com/bluebackblue/AssetLib",
 				"define_package_pathname":"blueback.assetlib"
+			},
+			{
+				"mode":"package",
+				"package_fullname":"BlueBack.Debug",
+				"url":"https://github.com/bluebackblue/UpmDebug",
+				"define_package_pathname":"blueback.debug"
 			}
 		]
 	},
 	"asmdef_editor":{
-		"define_list":[
+		"define_constraint_list":[
+		],
+		"version_define_list":[
 		],
 		"reference_list":[
 			{
@@ -79,7 +89,9 @@
 		]
 	},
 	"asmdef_sample":{
-		"define_list":[
+		"define_constraint_list":[
+		],
+		"version_define_list":[
 		],
 		"reference_list":[
 			{

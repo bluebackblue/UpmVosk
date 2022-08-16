@@ -32,7 +32,7 @@ namespace BlueBack.Vosk
 						yield return null;
 						if(t_async.isDone == true){
 							if(t_unitywebrequest.error != null){
-								#if(DEF_BLUEBACK_LOG)
+								#if(DEF_BLUEBACK_DEBUG_LOG)
 								DebugTool.Log(string.Format("UnityWebRequest : error :{0}",t_unitywebrequest.error));
 								#endif
 							}else{
@@ -73,7 +73,7 @@ namespace BlueBack.Vosk
 						yield return null;
 						if(t_async.isDone == true){
 							if(t_unitywebrequest.error != null){
-								#if(DEF_BLUEBACK_LOG)
+								#if(DEF_BLUEBACK_DEBUG_LOG)
 								DebugTool.Log(string.Format("UnityWebRequest : error :{0}",t_unitywebrequest.error));
 								#endif
 							}else{
@@ -187,7 +187,7 @@ namespace BlueBack.Vosk
 				System.Text.RegularExpressions.Match t_match = t_matchcollection[ii];
 				if(t_match.Success == true){
 					a_work.label_list.Add(t_match.Groups["th"].Value);
-					#if(DEF_BLUEBACK_LOG)
+					#if(DEF_BLUEBACK_DEBUG_LOG)
 					DebugTool.Log(string.Format("Label {0} : {1}",ii,a_work.label_list[ii]));
 					#endif
 				}
@@ -243,7 +243,7 @@ namespace BlueBack.Vosk
 						}break;
 					default:
 						{
-							#if(DEF_BLUEBACK_LOG)
+							#if(DEF_BLUEBACK_DEBUG_LOG)
 							DebugTool.Assert(false,string.Format("{0} : {1}",ii,a_work.label_list[ii]));
 							#endif
 						}break;

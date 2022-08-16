@@ -1,5 +1,5 @@
 # BlueBack.Vosk
-ＶＯＳＫ操作
+Vosk操作
 * 音声認識
 
 
@@ -13,6 +13,7 @@ MIT License
 * https://github.com/bluebackblue/UpmVosk
 * https://github.com/bluebackblue/UpmJsonItem
 * https://github.com/bluebackblue/AssetLib
+* https://github.com/bluebackblue/UpmDebug
 ### エディター
 * https://github.com/bluebackblue/UpmVosk
 * https://github.com/bluebackblue/AssetLib
@@ -26,7 +27,7 @@ Unity 2022.1.0b16
 
 ## UPM
 ### 最新
-* https://github.com/bluebackblue/UpmVosk.git?path=BlueBackVosk/Assets/UPM#0.0.4
+* https://github.com/bluebackblue/UpmVosk.git?path=BlueBackVosk/Assets/UPM#0.0.5
 ### 開発
 * https://github.com/bluebackblue/UpmVosk.git?path=BlueBackVosk/Assets/UPM
 

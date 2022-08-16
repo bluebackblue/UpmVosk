@@ -12,7 +12,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "0fe2e324e37ced781a01563736b0dce367e6112c"
+      "hash": "984a137dea0d434cc993f319d35f91c758a24120"
     },
     "blueback.install": {
       "version": "https://github.com/bluebackblue/UpmInstall.git?path=BlueBackInstall/Assets/UPM",
@@ -40,7 +40,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "e6abdf74f78286b5e3c2e10960470a2db1845c0e"
+      "hash": "2fee0ff36dca0b1623ed02917d3640a253fdc9b9"
     },
     "com.unity.collab-proxy": {
       "version": "1.15.15",
