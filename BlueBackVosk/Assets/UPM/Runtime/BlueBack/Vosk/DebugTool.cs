@@ -7,6 +7,15 @@
 */
 
 
+/** define
+*/
+#if((ASMDEF_BLUEBACK_DEBUG||USERDEF_BLUEBACK_DEBUG))
+#define ASMDEF_TRUE
+#else
+#warning "ASMDEF_TRUE"
+#endif
+
+
 /** BlueBack.Vosk
 */
 namespace BlueBack.Vosk
@@ -19,7 +28,7 @@ namespace BlueBack.Vosk
 
 		/** assertproc
 		*/
-		#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+		#if(ASMDEF_TRUE)
 		public static BlueBack.Debug.Assert.ProcType assertproc = BlueBack.Debug.Assert.Default;
 		#endif
 
@@ -28,7 +37,7 @@ namespace BlueBack.Vosk
 		public static void Assert(bool a_flag,System.Exception a_exception = null)
 		{
 			if(a_flag != true){
-				#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+				#if(ASMDEF_TRUE)
 				DebugTool.assertproc(null,a_exception);
 				#endif
 			}
@@ -39,7 +48,7 @@ namespace BlueBack.Vosk
 		public static void Assert(bool a_flag,string a_message)
 		{
 			if(a_flag != true){
-				#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+				#if(ASMDEF_TRUE)
 				DebugTool.assertproc(a_message,null);
 				#endif
 			}
@@ -51,7 +60,7 @@ namespace BlueBack.Vosk
 
 		/** logproc
 		*/
-		#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+		#if(ASMDEF_TRUE)
 		public static BlueBack.Debug.Log.ProcType logproc = BlueBack.Debug.Log.Default;
 		#endif
 
@@ -59,7 +68,7 @@ namespace BlueBack.Vosk
 		*/
 		public static void Log(string a_message)
 		{
-			#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+			#if(ASMDEF_TRUE)
 			DebugTool.logproc(a_message);
 			#endif
 		}
@@ -70,7 +79,7 @@ namespace BlueBack.Vosk
 
 		/** detailproc
 		*/
-		#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+		#if(ASMDEF_TRUE)
 		public static BlueBack.Debug.Detail.ProcType detailproc = BlueBack.Debug.Detail.Default;
 		#endif
 
@@ -78,7 +87,7 @@ namespace BlueBack.Vosk
 		*/
 		public static void Detail(string a_message)
 		{
-			#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+			#if(ASMDEF_TRUE)
 			DebugTool.detailproc(a_message);
 			#endif
 		}
@@ -89,13 +98,13 @@ namespace BlueBack.Vosk
 
 		/** editorlogproc
 		*/
-		#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+		#if(ASMDEF_TRUE)
 		public static BlueBack.Debug.Log.ProcType editorlogproc = BlueBack.Debug.Log.Default;
 		#endif
 
 		/** editorerrorlogproc
 		*/
-		#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+		#if(ASMDEF_TRUE)
 		public static BlueBack.Debug.ErrorLog.ProcType editorerrorlogproc = BlueBack.Debug.ErrorLog.Default;
 		#endif
 
@@ -103,7 +112,7 @@ namespace BlueBack.Vosk
 		*/
 		public static void EditorLog(string a_message)
 		{
-			#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+			#if(ASMDEF_TRUE)
 			DebugTool.editorlogproc(a_message);
 			#endif
 		}
@@ -112,7 +121,7 @@ namespace BlueBack.Vosk
 		*/
 		public static void EditorErrorLog(string a_message)
 		{
-			#if((DEF_BLUEBACK_DEBUG)&&(ASMDEF_BLUEBACK_DEBUG))
+			#if(ASMDEF_TRUE)
 			DebugTool.editorerrorlogproc(a_message);
 			#endif
 		}
