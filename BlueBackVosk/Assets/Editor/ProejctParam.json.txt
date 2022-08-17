@@ -145,7 +145,7 @@
 		},
 		"BlueBack.AssetLib.Editor":{
 			"domain":"blueback.assetlib",
-			"rootnamespace":"BlueBack.AssetLib",
+			"rootnamespace":"BlueBack.AssetLib.Editor",
 			"url":"https://github.com/bluebackblue/UpmAssetLib",
 			"dependence":"https://github.com/bluebackblue/UpmAssetLib.git?path=BlueBackAssetLib/Assets/UPM",
 			"info":""
@@ -159,7 +159,7 @@
 		},
 		"BlueBack.Audio.Editor":{
 			"domain":"blueback.audio",
-			"rootnamespace":"BlueBack.Audio",
+			"rootnamespace":"BlueBack.Audio.Editor",
 			"url":"https://github.com/bluebackblue/UpmAudio",
 			"dependence":"https://github.com/bluebackblue/UpmAudio.git?path=BlueBackAudio/Assets/UPM",
 			"info":""
@@ -173,7 +173,7 @@
 		},
 		"BlueBack.Code.Editor":{
 			"domain":"blueback.code",
-			"rootnamespace":"BlueBack.Code",
+			"rootnamespace":"BlueBack.Code.Editor",
 			"url":"https://github.com/bluebackblue/UpmCode",
 			"dependence":"https://github.com/bluebackblue/UpmCode.git?path=BlueBackCode/Assets/UPM",
 			"info":""
@@ -187,7 +187,7 @@
 		},
 		"BlueBack.Console.Editor":{
 			"domain":"blueback.console",
-			"rootnamespace":"BlueBack.Console",
+			"rootnamespace":"BlueBack.Console.Editor",
 			"url":"https://github.com/bluebackblue/UpmConsole",
 			"dependence":"https://github.com/bluebackblue/UpmConsole.git?path=BlueBackConsole/Assets/UPM",
 			"info":""
@@ -201,7 +201,7 @@
 		},
 		"BlueBack.Debug.Editor":{
 			"domain":"blueback.debug",
-			"rootnamespace":"BlueBack.Debug",
+			"rootnamespace":"BlueBack.Debug.Editor",
 			"url":"https://github.com/bluebackblue/UpmDebug",
 			"dependence":"https://github.com/bluebackblue/UpmDebug.git?path=BlueBackDebug/Assets/UPM",
 			"info":""
@@ -215,7 +215,7 @@
 		},
 		"BlueBack.DrawInstance.Editor":{
 			"domain":"blueback.drawinstance",
-			"rootnamespace":"BlueBack.DrawInstance",
+			"rootnamespace":"BlueBack.DrawInstance.Editor",
 			"url":"https://github.com/bluebackblue/UpmDrawInstance",
 			"dependence":"https://github.com/bluebackblue/UpmDrawInstance.git?path=BlueBackDrawInstance/Assets/UPM",
 			"info":""
@@ -229,7 +229,7 @@
 		},
 		"BlueBack.Excel.Editor":{
 			"domain":"blueback.excel",
-			"rootnamespace":"BlueBack.Excel",
+			"rootnamespace":"BlueBack.Excel.Editor",
 			"url":"https://github.com/bluebackblue/UpmExcel",
 			"dependence":"https://github.com/bluebackblue/UpmExcel.git?path=BlueBackExcel/Assets/UPM",
 			"info":""
@@ -243,7 +243,7 @@
 		},
 		"BlueBack.Font.Editor":{
 			"domain":"blueback.font",
-			"rootnamespace":"BlueBack.Font",
+			"rootnamespace":"BlueBack.Font.Editor",
 			"url":"https://github.com/bluebackblue/UpmFont",
 			"dependence":"https://github.com/bluebackblue/UpmFont.git?path=BlueBackFont/Assets/UPM",
 			"info":""
@@ -257,7 +257,7 @@
 		},
 		"BlueBack.Gl.Editor":{
 			"domain":"blueback.gl",
-			"rootnamespace":"BlueBack.Gl",
+			"rootnamespace":"BlueBack.Gl.Editor",
 			"url":"https://github.com/bluebackblue/UpmGl",
 			"dependence":"https://github.com/bluebackblue/UpmGl.git?path=BlueBackGl/Assets/UPM",
 			"info":""
@@ -271,7 +271,7 @@
 		},
 		"BlueBack.Install.Editor":{
 			"domain":"blueback.install",
-			"rootnamespace":"BlueBack.Install",
+			"rootnamespace":"BlueBack.Install.Editor",
 			"url":"https://github.com/bluebackblue/UpmInstall",
 			"dependence":"https://github.com/bluebackblue/UpmInstall.git?path=BlueBackInstall/Assets/UPM",
 			"info":""
@@ -285,7 +285,7 @@
 		},
 		"BlueBack.JsonItem.Editor":{
 			"domain":"blueback.jsonitem",
-			"rootnamespace":"BlueBack.JsonItem",
+			"rootnamespace":"BlueBack.JsonItem.Editor",
 			"url":"https://github.com/bluebackblue/UpmJsonItem",
 			"dependence":"https://github.com/bluebackblue/UpmJsonItem.git?path=BlueBackJsonItem/Assets/UPM",
 			"info":""
@@ -299,7 +299,7 @@
 		},
 		"BlueBack.Math.Editor":{
 			"domain":"blueback.math",
-			"rootnamespace":"BlueBack.Math",
+			"rootnamespace":"BlueBack.Math.Editor",
 			"url":"https://github.com/bluebackblue/UpmMath",
 			"dependence":"https://github.com/bluebackblue/UpmMath.git?path=BlueBackMath/Assets/UPM",
 			"info":""
@@ -313,7 +313,7 @@
 		},
 		"BlueBack.Mouse.Editor":{
 			"domain":"blueback.mouse",
-			"rootnamespace":"BlueBack.Mouse",
+			"rootnamespace":"BlueBack.Mouse.Editor",
 			"url":"https://github.com/bluebackblue/UpmMouse",
 			"dependence":"https://github.com/bluebackblue/UpmMouse.git?path=BlueBackMouse/Assets/UPM",
 			"info":""
@@ -327,7 +327,7 @@
 		},
 		"BlueBack.Pad.Editor":{
 			"domain":"blueback.pad",
-			"rootnamespace":"BlueBack.Pad",
+			"rootnamespace":"BlueBack.Pad.Editor",
 			"url":"https://github.com/bluebackblue/UpmPad",
 			"dependence":"https://github.com/bluebackblue/UpmPad.git?path=BlueBackPad/Assets/UPM",
 			"info":""
@@ -341,7 +341,7 @@
 		},
 		"BlueBack.PoolList.Editor":{
 			"domain":"blueback.poollist",
-			"rootnamespace":"BlueBack.PoolList",
+			"rootnamespace":"BlueBack.PoolList.Editor",
 			"url":"https://github.com/bluebackblue/UpmPoolList",
 			"dependence":"https://github.com/bluebackblue/UpmPoolList.git?path=BlueBackPoolList/Assets/UPM",
 			"info":""
@@ -355,7 +355,7 @@
 		},
 		"BlueBack.Request.Editor":{
 			"domain":"blueback.request",
-			"rootnamespace":"BlueBack.Request",
+			"rootnamespace":"BlueBack.Request.Editor",
 			"url":"https://github.com/bluebackblue/UpmRequest",
 			"dependence":"https://github.com/bluebackblue/UpmRequest.git?path=BlueBackRequest/Assets/UPM",
 			"info":""
@@ -369,7 +369,7 @@
 		},
 		"BlueBack.Scene.Editor":{
 			"domain":"blueback.scene",
-			"rootnamespace":"BlueBack.Scene",
+			"rootnamespace":"BlueBack.Scene.Editor",
 			"url":"https://github.com/bluebackblue/UpmScene",
 			"dependence":"https://github.com/bluebackblue/UpmScene.git?path=BlueBackScene/Assets/UPM",
 			"info":""
@@ -383,7 +383,7 @@
 		},
 		"BlueBack.SlackWebApi.Editor":{
 			"domain":"blueback.slackwebapi",
-			"rootnamespace":"BlueBack.SlackWebApi",
+			"rootnamespace":"BlueBack.SlackWebApi.Editor",
 			"url":"https://github.com/bluebackblue/UpmSlackWebApi",
 			"dependence":"https://github.com/bluebackblue/UpmSlackWebApi.git?path=BlueBackSlackWebApi/Assets/UPM",
 			"info":""
@@ -397,7 +397,7 @@
 		},
 		"BlueBack.TestLib.Editor":{
 			"domain":"blueback.testlib",
-			"rootnamespace":"BlueBack.TestLib",
+			"rootnamespace":"BlueBack.TestLib.Editor",
 			"url":"https://github.com/bluebackblue/UpmTestLib",
 			"dependence":"https://github.com/bluebackblue/UpmTestLib.git?path=BlueBackTestLib/Assets/UPM",
 			"info":""
@@ -411,7 +411,7 @@
 		},
 		"BlueBack.TimeScale.Editor":{
 			"domain":"blueback.timescale",
-			"rootnamespace":"BlueBack.TimeScale",
+			"rootnamespace":"BlueBack.TimeScale.Editor",
 			"url":"https://github.com/bluebackblue/UpmTimeScale",
 			"dependence":"https://github.com/bluebackblue/UpmTimeScale.git?path=BlueBackTimeScale/Assets/UPM",
 			"info":""
@@ -425,7 +425,7 @@
 		},
 		"BlueBack.UnityPlayerLoop.Editor":{
 			"domain":"blueback.unityplayerloop",
-			"rootnamespace":"BlueBack.UnityPlayerLoop",
+			"rootnamespace":"BlueBack.UnityPlayerLoop.Editor",
 			"url":"https://github.com/bluebackblue/UpmUnityPlayerLoop",
 			"dependence":"https://github.com/bluebackblue/UpmUnityPlayerLoop.git?path=BlueBackUnityPlayerLoop/Assets/UPM",
 			"info":""
@@ -439,7 +439,7 @@
 		},
 		"BlueBack.VariableDigit.Editor":{
 			"domain":"blueback.variabledigit",
-			"rootnamespace":"BlueBack.VariableDigit",
+			"rootnamespace":"BlueBack.VariableDigit.Editor",
 			"url":"https://github.com/bluebackblue/UpmVariableDigit",
 			"dependence":"https://github.com/bluebackblue/UpmVariableDigit.git?path=BlueBackVariableDigit/Assets/UPM",
 			"info":""
@@ -453,7 +453,7 @@
 		},
 		"BlueBack.VersionManager.Editor":{
 			"domain":"blueback.versionmanager",
-			"rootnamespace":"BlueBack.VersionManager",
+			"rootnamespace":"BlueBack.VersionManager.Editor",
 			"url":"https://github.com/bluebackblue/UpmVersionManager",
 			"dependence":"https://github.com/bluebackblue/UpmVersionManager.git?path=BlueBackVersionManager/Assets/UPM",
 			"info":""
@@ -467,7 +467,7 @@
 		},
 		"BlueBack.Vosk.Editor":{
 			"domain":"blueback.vosk",
-			"rootnamespace":"BlueBack.Vosk",
+			"rootnamespace":"BlueBack.Vosk.Editor",
 			"url":"https://github.com/bluebackblue/UpmVosk",
 			"dependence":"https://github.com/bluebackblue/UpmVosk.git?path=BlueBackVosk/Assets/UPM",
 			"info":""
