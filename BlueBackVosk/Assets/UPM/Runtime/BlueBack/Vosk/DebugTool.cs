@@ -99,13 +99,13 @@ namespace BlueBack.Vosk
 		/** editorlog
 		*/
 		#if(ASMDEF_TRUE)
-		public static BlueBack.Debug.Log.CallBackType editorlog = BlueBack.Debug.Log.Execute;
+		public static BlueBack.Debug.EditorLog.CallBackType editorlog = BlueBack.Debug.EditorLog.Execute;
 		#endif
 
 		/** editorerrorlog
 		*/
 		#if(ASMDEF_TRUE)
-		public static BlueBack.Debug.ErrorLog.CallBackType editorerrorlog = BlueBack.Debug.ErrorLog.Execute;
+		public static BlueBack.Debug.EditorErrorLog.CallBackType editorerrorlog = BlueBack.Debug.EditorErrorLog.Execute;
 		#endif
 
 		/** EditorLog
