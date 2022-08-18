@@ -26,10 +26,10 @@ namespace BlueBack.Vosk
 	{
 		#if(DEF_BLUEBACK_DEBUG_ASSERT)
 
-		/** assertproc
+		/** assert
 		*/
 		#if(ASMDEF_TRUE)
-		public static BlueBack.Debug.Assert.ProcType assertproc = BlueBack.Debug.Assert.Default;
+		public static BlueBack.Debug.Assert.CallBackType assert = BlueBack.Debug.Assert.Execute;
 		#endif
 
 		/** Assert
@@ -38,7 +38,7 @@ namespace BlueBack.Vosk
 		{
 			if(a_flag != true){
 				#if(ASMDEF_TRUE)
-				DebugTool.assertproc(null,a_exception);
+				DebugTool.assert(null,a_exception);
 				#endif
 			}
 		}
@@ -49,7 +49,7 @@ namespace BlueBack.Vosk
 		{
 			if(a_flag != true){
 				#if(ASMDEF_TRUE)
-				DebugTool.assertproc(a_message,null);
+				DebugTool.assert(a_message,null);
 				#endif
 			}
 		}
@@ -58,10 +58,10 @@ namespace BlueBack.Vosk
 
 		#if(DEF_BLUEBACK_DEBUG_LOG)
 
-		/** logproc
+		/** log
 		*/
 		#if(ASMDEF_TRUE)
-		public static BlueBack.Debug.Log.ProcType logproc = BlueBack.Debug.Log.Default;
+		public static BlueBack.Debug.Log.CallBackType log = BlueBack.Debug.Log.Execute;
 		#endif
 
 		/** Log
@@ -69,7 +69,7 @@ namespace BlueBack.Vosk
 		public static void Log(string a_message)
 		{
 			#if(ASMDEF_TRUE)
-			DebugTool.logproc(a_message);
+			DebugTool.log(a_message);
 			#endif
 		}
 
@@ -77,10 +77,10 @@ namespace BlueBack.Vosk
 
 		#if(DEF_BLUEBACK_DEBUG_DETAIL)
 
-		/** detailproc
+		/** detail
 		*/
 		#if(ASMDEF_TRUE)
-		public static BlueBack.Debug.Detail.ProcType detailproc = BlueBack.Debug.Detail.Default;
+		public static BlueBack.Debug.Detail.CallBackType detail = BlueBack.Debug.Detail.Execute;
 		#endif
 
 		/** Detail
@@ -88,7 +88,7 @@ namespace BlueBack.Vosk
 		public static void Detail(string a_message)
 		{
 			#if(ASMDEF_TRUE)
-			DebugTool.detailproc(a_message);
+			DebugTool.detail(a_message);
 			#endif
 		}
 
@@ -96,16 +96,16 @@ namespace BlueBack.Vosk
 
 		#if(UNITY_EDITOR)
 
-		/** editorlogproc
+		/** editorlog
 		*/
 		#if(ASMDEF_TRUE)
-		public static BlueBack.Debug.Log.ProcType editorlogproc = BlueBack.Debug.Log.Default;
+		public static BlueBack.Debug.Log.CallBackType editorlog = BlueBack.Debug.Log.Execute;
 		#endif
 
-		/** editorerrorlogproc
+		/** editorerrorlog
 		*/
 		#if(ASMDEF_TRUE)
-		public static BlueBack.Debug.ErrorLog.ProcType editorerrorlogproc = BlueBack.Debug.ErrorLog.Default;
+		public static BlueBack.Debug.ErrorLog.CallBackType editorerrorlog = BlueBack.Debug.ErrorLog.Execute;
 		#endif
 
 		/** EditorLog
@@ -113,7 +113,7 @@ namespace BlueBack.Vosk
 		public static void EditorLog(string a_message)
 		{
 			#if(ASMDEF_TRUE)
-			DebugTool.editorlogproc(a_message);
+			DebugTool.editorlog(a_message);
 			#endif
 		}
 
@@ -122,7 +122,7 @@ namespace BlueBack.Vosk
 		public static void EditorErrorLog(string a_message)
 		{
 			#if(ASMDEF_TRUE)
-			DebugTool.editorerrorlogproc(a_message);
+			DebugTool.editorerrorlog(a_message);
 			#endif
 		}
 
