@@ -5,49 +5,49 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "ca5cb2e389a9bfff5b2a01b193a886945af68b52"
+      "hash": "fe56c47475fde8905c6114e30ecc0f5323253984"
     },
     "blueback.code": {
       "version": "https://github.com/bluebackblue/UpmCode.git?path=BlueBackCode/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "9cfc97ad0f600805b461b4d866247b55fe668f61"
+      "hash": "be38c03b74a3b0a0d1839495b84bd79695153b05"
     },
     "blueback.debug": {
       "version": "https://github.com/bluebackblue/UpmDebug.git?path=BlueBackDebug/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "e02348a9847bc45327dd7e38b5a1b65f7ef44d05"
+      "hash": "a5d76cb5aeba5a356a12907710355f7c5afbe835"
     },
     "blueback.install": {
       "version": "https://github.com/bluebackblue/UpmInstall.git?path=BlueBackInstall/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "27eedb6bef35101440ae677cb69549e4626310c8"
+      "hash": "d3017607c5076d925aa0715c31e625f7596f3e1f"
     },
     "blueback.jsonitem": {
       "version": "https://github.com/bluebackblue/UpmJsonItem.git?path=BlueBackJsonItem/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "ff70e56b49f41fb80d8e850720d33248c7d31dca"
+      "hash": "0fa8e6dac81d0a54139357606ab4baace7c61030"
     },
     "blueback.request": {
       "version": "https://github.com/bluebackblue/UpmRequest.git?path=BlueBackRequest/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "ddb9b0141cb2407a50973dee0387d32d73011b9a"
+      "hash": "684b8338cf91e0d73ee87dd994e7e6f99bc655e7"
     },
     "blueback.versionmanager": {
       "version": "https://github.com/bluebackblue/UpmVersionManager.git?path=BlueBackVersionManager/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "723df41a8945ca34017a3241c82cb145d9b4a0ae"
+      "hash": "85c7cc2ba15941ec9437851c349ef5a4bc1c0d4b"
     },
     "com.unity.collab-proxy": {
       "version": "1.15.15",

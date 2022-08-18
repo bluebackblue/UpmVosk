@@ -9,7 +9,7 @@
 
 /** define
 */
-#if((ASMDEF_BLUEBACK_DEBUG||USERDEF_BLUEBACK_DEBUG))
+#if(ASMDEF_BLUEBACK_DEBUG)
 #define ASMDEF_TRUE
 #else
 #warning "ASMDEF_TRUE"
