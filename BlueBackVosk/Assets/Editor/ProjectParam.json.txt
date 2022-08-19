@@ -4,8 +4,8 @@
 	"git_url":"https://github.com/bluebackblue/UpmVosk",
 	"git_api":"https://api.github.com/repos/bluebackblue/UpmVosk",
 	"git_path":"BlueBackVosk/Assets/UPM",
-	"discription_simple":"Vosk操作",
-	"discription_detal":[
+	"description_simple":"Vosk操作",
+	"description_detal":[
 		"Vosk操作",
 		"* 音声認識",
 		""

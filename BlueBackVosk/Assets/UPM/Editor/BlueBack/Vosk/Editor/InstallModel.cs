@@ -31,7 +31,7 @@ namespace BlueBack.Vosk.Editor
 			//ＺＩＰファイル検索。
 			string t_path_zip;
 			{
-				System.Collections.Generic.List<UnityEditor.PackageManager.PackageInfo>  t_list = AssetLib.Editor.CreatePackageList.Create(true,true);
+				System.Collections.Generic.List<UnityEditor.PackageManager.PackageInfo>  t_list = AssetLib.Editor.CreatePackageInfoList.Create(true,true);
 
 				string t_path_findzip = null;
 				for(int ii=0;ii<t_list.Count;ii++){

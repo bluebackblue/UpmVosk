@@ -31,42 +31,42 @@ namespace Editor
 		static VersionManagerSetting()
 		#if(ASMDEF_TRUE)
 		{
-			//Object_RootUssUxml
-			BlueBack.VersionManager.Editor.Object_RootUssUxml.Save(false);
+			//UssUxml保存。
+			BlueBack.VersionManager.Editor.Execute_Root_UssUxml_Save.Execute(false);
 
 			//projectparam
-			BlueBack.VersionManager.Editor.Object_Setting.projectparam = BlueBack.VersionManager.Editor.ProjectParam.Load();
+			BlueBack.VersionManager.Editor.Execute_Editor_ProjectParamJson_Load.Execute();
 
 			//object_root_readme_md
-			BlueBack.VersionManager.Editor.Object_Setting.object_root_readme_md = new BlueBack.VersionManager.Editor.Object_Setting.Creator_Type[]{
+			BlueBack.VersionManager.Editor.StaticValue.readmemd_creator_callback = new BlueBack.VersionManager.Editor.ReadmeMdCreator.CallBackType[]{
 
 				//概要。
-				(in BlueBack.VersionManager.Editor.Object_Setting.Creator_Argument a_argument) => {
+				(in BlueBack.VersionManager.Editor.ReadmeMdCreator.Argument a_argument) => {
 					System.Collections.Generic.List<string> t_list = new System.Collections.Generic.List<string>();
-					t_list.Add("# " + BlueBack.VersionManager.Editor.Object_Setting.projectparam.namespace_author + "." + BlueBack.VersionManager.Editor.Object_Setting.projectparam.namespace_package);
-					t_list.AddRange(BlueBack.VersionManager.Editor.Object_Setting.Create_RootReadMd_Overview(a_argument));
+					t_list.Add("# " + BlueBack.VersionManager.Editor.StaticValue.editor_projectparam_json.namespace_author + "." + BlueBack.VersionManager.Editor.StaticValue.editor_projectparam_json.namespace_package);
+					t_list.AddRange(BlueBack.VersionManager.Editor.ReadmeMdCreator.Create_RootReadMd_Overview(a_argument));
 					return t_list.ToArray();
 				},
 
 				//ライセンス。
-				(in BlueBack.VersionManager.Editor.Object_Setting.Creator_Argument a_argument) => {
+				(in BlueBack.VersionManager.Editor.ReadmeMdCreator.Argument a_argument) => {
 					return new string[]{
 						"## ライセンス",
 						"MIT License",
-						"* " + BlueBack.VersionManager.Editor.Object_Setting.projectparam.git_url + "/blob/main/LICENSE",
+						"* " + BlueBack.VersionManager.Editor.StaticValue.editor_projectparam_json.git_url + "/blob/main/LICENSE",
 					};
 				},
 
 				//依存。
-				(in BlueBack.VersionManager.Editor.Object_Setting.Creator_Argument a_argument) => {
+				(in BlueBack.VersionManager.Editor.ReadmeMdCreator.Argument a_argument) => {
 					System.Collections.Generic.List<string> t_list = new System.Collections.Generic.List<string>();
 					t_list.Add("## 依存 / 使用ライセンス等");
-					t_list.AddRange(BlueBack.VersionManager.Editor.Object_Setting.Create_RootReadMd_Asmdef_Dependence(a_argument));
+					t_list.AddRange(BlueBack.VersionManager.Editor.ReadmeMdCreator.Create_RootReadMd_Asmdef_Dependence(a_argument));
 					return t_list.ToArray();
 				},
 
 				//動作確認。
-				(in BlueBack.VersionManager.Editor.Object_Setting.Creator_Argument a_argument) => {
+				(in BlueBack.VersionManager.Editor.ReadmeMdCreator.Argument a_argument) => {
 					return new string[]{
 						"## 動作確認",
 						"Unity " + UnityEngine.Application.unityVersion,
@@ -74,18 +74,18 @@ namespace Editor
 				},
 
 				//UPM。
-				(in BlueBack.VersionManager.Editor.Object_Setting.Creator_Argument a_argument) => {
+				(in BlueBack.VersionManager.Editor.ReadmeMdCreator.Argument a_argument) => {
 					return new string[]{
 						"## UPM",
 						"### 最新",
-						"* " + BlueBack.VersionManager.Editor.Object_Setting.projectparam.git_url + ".git?path=" + BlueBack.VersionManager.Editor.Object_Setting.projectparam.git_path + "#" + a_argument.version,
+						"* " + BlueBack.VersionManager.Editor.StaticValue.editor_projectparam_json.git_url + ".git?path=" + BlueBack.VersionManager.Editor.StaticValue.editor_projectparam_json.git_path + "#" + a_argument.version,
 						"### 開発",
-						"* " + BlueBack.VersionManager.Editor.Object_Setting.projectparam.git_url + ".git?path=" + BlueBack.VersionManager.Editor.Object_Setting.projectparam.git_path,
+						"* " + BlueBack.VersionManager.Editor.StaticValue.editor_projectparam_json.git_url + ".git?path=" + BlueBack.VersionManager.Editor.StaticValue.editor_projectparam_json.git_path,
 					};
 				},
 
 				//インストール。 
-				(in BlueBack.VersionManager.Editor.Object_Setting.Creator_Argument a_argument) => {
+				(in BlueBack.VersionManager.Editor.ReadmeMdCreator.Argument a_argument) => {
 					return new string[]{
 						"## Unityへの追加方法",
 						"* Unity起動",
@@ -101,9 +101,9 @@ namespace Editor
 				},
 
 				//例。
-				(in BlueBack.VersionManager.Editor.Object_Setting.Creator_Argument a_argument) => {
+				(in BlueBack.VersionManager.Editor.ReadmeMdCreator.Argument a_argument) => {
 					System.Collections.Generic.List<string> t_list = new System.Collections.Generic.List<string>();
-					t_list.AddRange(BlueBack.VersionManager.Editor.Object_Setting.Create_RootReadMd_Exsample(a_argument));
+					t_list.AddRange(BlueBack.VersionManager.Editor.ReadmeMdCreator.Create_RootReadMd_Exsample(a_argument));
 					return t_list.ToArray();
 				},
 			};
