@@ -101,7 +101,7 @@ namespace BlueBack.Vosk.Dll
 			}
 		}
 
-		/** 作成。Recognizer。
+		/** CreateRecognizer
 		*/
 		public void CreateRecognizer(int a_samplerate)
 		{
@@ -139,7 +139,7 @@ namespace BlueBack.Vosk.Dll
 			}
 		}
 
-		/** 削除。Recognizer。
+		/** DeleteRecognizer
 		*/
 		public void DeleteRecognizer()
 		{
