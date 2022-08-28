@@ -24,7 +24,7 @@
 		""
 	],
 	"root_readmemd_path":"../../README.md",
-	"need_unity_version":"2020.1",
+	"need_unity_version":"2021.3",
 	"debugtool_generate":"true",
 	"license":"MIT License",
 	"asmdef_runtime":{
