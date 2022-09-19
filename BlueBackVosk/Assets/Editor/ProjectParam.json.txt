@@ -150,18 +150,18 @@
 			"dependence":"https://github.com/bluebackblue/UpmAssetLib.git?path=BlueBackAssetLib/Assets/UPM",
 			"info":""
 		},
-		"BlueBack.Audio":{
-			"domain":"blueback.audio",
-			"rootnamespace":"BlueBack.Audio",
-			"url":"https://github.com/bluebackblue/UpmAudio",
-			"dependence":"https://github.com/bluebackblue/UpmAudio.git?path=BlueBackAudio/Assets/UPM",
+		"BlueBack.Bgm":{
+			"domain":"blueback.bgm",
+			"rootnamespace":"BlueBack.Bgm",
+			"url":"https://github.com/bluebackblue/UpmBgm",
+			"dependence":"https://github.com/bluebackblue/UpmBgm.git?path=BlueBackBgm/Assets/UPM",
 			"info":""
 		},
-		"BlueBack.Audio.Editor":{
-			"domain":"blueback.audio",
-			"rootnamespace":"BlueBack.Audio.Editor",
-			"url":"https://github.com/bluebackblue/UpmAudio",
-			"dependence":"https://github.com/bluebackblue/UpmAudio.git?path=BlueBackAudio/Assets/UPM",
+		"BlueBack.Bgm.Editor":{
+			"domain":"blueback.bgm",
+			"rootnamespace":"BlueBack.Bgm.Editor",
+			"url":"https://github.com/bluebackblue/UpmBgm",
+			"dependence":"https://github.com/bluebackblue/UpmBgm.git?path=BlueBackBgm/Assets/UPM",
 			"info":""
 		},
 		"BlueBack.Code":{
