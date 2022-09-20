@@ -5,49 +5,49 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "3ce1c6b19f8956e6c38486c1e5e36c2ef74d8a78"
+      "hash": "40ce3468e5a80ffac0a4f4be79ec564fab357391"
     },
     "blueback.code": {
       "version": "https://github.com/bluebackblue/UpmCode.git?path=BlueBackCode/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f425f1eb28515dfeb2f2a1e3c1b2e8366d5771e7"
+      "hash": "c93f69b8d64d27f3559836b835eb67b64b45af51"
     },
     "blueback.debug": {
       "version": "https://github.com/bluebackblue/UpmDebug.git?path=BlueBackDebug/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "8dd795053c8be512c7cefe8df3f6d6b641dafc09"
+      "hash": "7a0f53a4b0c8b2daf78971e3a20e33a3d03a9757"
     },
     "blueback.install": {
       "version": "https://github.com/bluebackblue/UpmInstall.git?path=BlueBackInstall/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "dabe1d3eae3ec60b612503a37147a059a0e1d8af"
+      "hash": "d958f9df2fa0b109dacd99c9c9f751bbb9f16ddd"
     },
     "blueback.jsonitem": {
       "version": "https://github.com/bluebackblue/UpmJsonItem.git?path=BlueBackJsonItem/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "5df4c16588c62e11174bb9001e5182024b7d4127"
+      "hash": "ee055a11e3a96d250c4296e128892ea30dbf95d8"
     },
     "blueback.request": {
       "version": "https://github.com/bluebackblue/UpmRequest.git?path=BlueBackRequest/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "7db6a81470c9b1c93cdddcf32d70a7a13b16958c"
+      "hash": "bd04d6622cab807a0cac5e69482d45c8b519426d"
     },
     "blueback.versionmanager": {
       "version": "https://github.com/bluebackblue/UpmVersionManager.git?path=BlueBackVersionManager/Assets/UPM",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "7317a22254fecf042601c6f15d1bb6278e1180a7"
+      "hash": "bf3c14eeb86e3ce837a5950076712b25c6b54187"
     },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
